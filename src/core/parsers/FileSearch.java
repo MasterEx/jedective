@@ -62,21 +62,21 @@ public class FileSearch {
     }
 
     private static void hit(String tmp,CycleQ q,Scanner in,String filename,Statistics stats) {
-         Logger.add("log.txt", filename, 7);
+         Logger.add(jedective.jedetive.log, filename, 7);
          stats.addCellphone();
-         Logger.add("log.txt", tmp, 0);
+         Logger.add(jedective.jedetive.log, tmp, 0);
                 for(int i=0;i<q.size();i++)
                 {
                     if(Matcher.isName(q.pick(i)))
                     {
-                        Logger.add("log.txt", q.pick(i), 5);
-                        Logger.add("log.txt", q.toString(), 1);
+                        Logger.add(jedective.jedetive.log, q.pick(i), 5);
+                        Logger.add(jedective.jedetive.log, q.toString(), 1);
                         stats.addPossibleMatch();
                     }
                     if(Matcher.isSurName(q.pick(i)))
                     {
-                        Logger.add("log.txt", q.pick(i), 6);
-                        Logger.add("log.txt", q.toString(), 2);
+                        Logger.add(jedective.jedetive.log, q.pick(i), 6);
+                        Logger.add(jedective.jedetive.log, q.toString(), 2);
                         stats.addPossibleMatch();
                     }
                 }
