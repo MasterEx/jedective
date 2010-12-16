@@ -47,6 +47,8 @@ public class Logger {
                 out.write("Possible Surname:"+w+"\n");
             else if(n==7)
                 out.write("\nFile: "+w+"\n");
+            else if(n==8)
+                out.write("*Error* "+w+"\n");
             out.close();
         } catch (IOException ex) {
             //java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);

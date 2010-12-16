@@ -41,30 +41,28 @@ public class cmatch {
             usage();
             System.exit(0);
         }
-        System.out.println("HRER 1");
         Logger.start("log.txt");
-        System.out.println("HRER 2");
         File fpath = new File(path);
         if(fpath.exists() && fpath.isDirectory()) {
-        System.out.println("HRER 4");
             DirectorySearch searcher = new DirectorySearch(stats);
             try {
                 searcher.dirParser(path);
             } catch (FileNotFoundException ex) {
                 java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.add("log.txt"," FileNotFoundException or IOException",8);
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.add("log.txt"," FileNotFoundException or IOException",8);
             }
         } else if(fpath.exists() && fpath.isFile()) {
-        System.out.println("HRER 5");
             FileSearch searcher = new FileSearch(fpath,stats);
             try {
                 searcher.parseFile(fpath, true);
             } catch (FileNotFoundException ex) {
                 java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.add("log.txt"," FileNotFoundException",8);
             }
         }
-        System.out.println("HRER 6");
         Logger.stop("log.txt",stats.gettotalwebpages(),stats.getPossiblematches(),stats.getCellphones(),stats.getSuccessRatio());
     }
 

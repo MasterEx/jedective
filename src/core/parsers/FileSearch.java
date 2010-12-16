@@ -18,7 +18,8 @@ public class FileSearch {
     private Statistics stats;
     private File file;
     private Html2Text converter = new Html2Text();
-    private static final String SYMBOLREGEX = "(,|.|-|;|:|\\*|\\?|\\\\|/|>|<|!)*";
+    //private static final String SYMBOLREGEX = "[\\p{Punct}&&[^(@|.|\\+)]]+";
+    private static final String SYMBOLREGEX = "(!|\"|'|#|$|%|&|,|-|\\.|/|\\\\|:|_|;|\\?|\\^|\\{|\\})+";
     
     public FileSearch(File file) {
         this.file = file;
@@ -47,7 +48,7 @@ public class FileSearch {
             CycleQ q = new CycleQ(bound);
             while(in.hasNext())
             {
-                if(Matcher.isCellphone(tmp=in.next().replaceAll(SYMBOLREGEX, " ")))
+                if(Matcher.isCellphone(tmp=in.next()))
                 {
                    hit(tmp,q,in,file.getAbsolutePath(),stats);
                 }

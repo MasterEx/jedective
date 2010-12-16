@@ -24,7 +24,7 @@ public class DirectorySearch {
     }
     
     public void dirParser(String path) throws FileNotFoundException, IOException {
-        File dir = new File(path);
+        File dir = new File(path),file;
         FilenameFilter filter = new FilenameFilter() {
             public boolean accept(File dir, String name) {
                 return (!name.startsWith(".") || name.endsWith(".html") || name.endsWith(".htm"));
@@ -35,9 +35,10 @@ public class DirectorySearch {
         {
             if((new File(path+File.separatorChar+f[i])).isDirectory())
                 this.dirParser(path+File.separatorChar+f[i]);
-            else if(new File(path+File.separatorChar+f[i]).isFile())
+            else if((file = new File(path+File.separatorChar+f[i])).isFile())
             {
                 filesearcher = new FileSearch(new File(path+File.separatorChar+f[i]),stats);
+                filesearcher.parseFile(file, true);
                 stats.addtotalwebpages();
             }
         }
