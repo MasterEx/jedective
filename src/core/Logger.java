@@ -14,7 +14,10 @@ import java.util.Date;
  */
 public class Logger {
 
+    private static long starttime;
+
     public static void start(String fname) {
+        starttime = System.currentTimeMillis();
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fname, true));
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -59,8 +62,11 @@ public class Logger {
     public static void stop(String fname,int total,int matches,int cellphones,float ratio) {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fname, true));
-            out.write("\n---------------------------------------\n\nCellphones Found: "+cellphones+"\nWebpages searched: "+total+"\n"
-                    + "Success ratio:"+ratio+"\n\n~/END\nCreated with Periklis Ntanasis' inspector");
+            out.write("\n---------------------------------------\n\nCellphones Found: "
+                    +cellphones+"\nWebpages searched: "+total+"\n"
+                    + "Success ratio: "+ratio+"\n\n"
+                    +"Execution Time: "+(System.currentTimeMillis()-starttime)/1000+" sec"
+                    +"\n\n~/END\nCreated with Periklis Ntanasis jedective");
             out.close();
         } catch (IOException ex) {
             //java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
