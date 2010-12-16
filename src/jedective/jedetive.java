@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package cellphonematcher;
+package jedective;
 
 import core.Logger;
 import core.parsers.DirectorySearch;
@@ -16,9 +16,9 @@ import java.util.logging.Level;
 
 /**
  *
- * @author periklis
+ * @author Periklis Ntanasis
  */
-public class cmatch {
+public class jedetive {
 
     private static final String HELP_OPT = "help";
     private static boolean help=false;
@@ -48,10 +48,10 @@ public class cmatch {
             try {
                 searcher.dirParser(path);
             } catch (FileNotFoundException ex) {
-                java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(jedetive.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.add("log.txt"," FileNotFoundException or IOException",8);
             } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(jedetive.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.add("log.txt"," FileNotFoundException or IOException",8);
             }
         } else if(fpath.exists() && fpath.isFile()) {
@@ -59,7 +59,7 @@ public class cmatch {
             try {
                 searcher.parseFile(fpath, true);
             } catch (FileNotFoundException ex) {
-                java.util.logging.Logger.getLogger(cmatch.class.getName()).log(Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(jedetive.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.add("log.txt"," FileNotFoundException",8);
             }
         }
@@ -70,7 +70,7 @@ public class cmatch {
         System.err.printf("Usage: java -jar %s.jar [options] <file>\n"
 				  + "\n\tOptions are:\n"
 				  + "\t %s\tthis help message\n",
-                                  cmatch.class.getSimpleName(),HELP_OPT);
+                                  jedetive.class.getSimpleName(),HELP_OPT);
     }
 
 }
