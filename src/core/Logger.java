@@ -54,15 +54,15 @@ public class Logger {
         }
     }
 
-    public static void stop(String fname,int total,int matches,Statistics stats) {
+    public static void stop(String fname,int total,int matches,int cellphones,float ratio) {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(fname, true));
-            out.write("\n---------------------------------------\n\nCellphones Found: "+stats.getCellphones()+"\nWebpages searched: "+total+"\n"
-                    + "Success ratio:"+stats.getSuccessRatio()+"\n\n~/END\nCreated with Periklis Ntanasis' inspector");
+            out.write("\n---------------------------------------\n\nCellphones Found: "+cellphones+"\nWebpages searched: "+total+"\n"
+                    + "Success ratio:"+ratio+"\n\n~/END\nCreated with Periklis Ntanasis' inspector");
             out.close();
         } catch (IOException ex) {
             //java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("There was an error while creating or writing to file: "+fname);
+            System.out.println("There was an error while creating or writing to file: "+fname+"\n");
         }
     }
 

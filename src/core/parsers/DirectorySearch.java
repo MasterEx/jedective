@@ -14,12 +14,20 @@ public class DirectorySearch {
     
     private FileSearch filesearcher;
     private Statistics stats;
+
+    public DirectorySearch() {
+
+    }
+
+    public DirectorySearch(Statistics stats) {
+        this.stats = stats;
+    }
     
     public void dirParser(String path) throws FileNotFoundException, IOException {
         File dir = new File(path);
         FilenameFilter filter = new FilenameFilter() {
             public boolean accept(File dir, String name) {
-                return (!name.startsWith(".") | name.endsWith(".html") | name.endsWith(".htm"));
+                return (!name.startsWith(".") || name.endsWith(".html") || name.endsWith(".htm"));
             }
         };
         String[] f = dir.list(filter);
@@ -30,7 +38,7 @@ public class DirectorySearch {
             else if(new File(path+File.separatorChar+f[i]).isFile())
             {
                 filesearcher = new FileSearch(new File(path+File.separatorChar+f[i]),stats);
-                stats.addTotalCellphones();
+                stats.addtotalwebpages();
             }
         }
     }

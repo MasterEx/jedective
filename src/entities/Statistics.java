@@ -8,12 +8,12 @@ public class Statistics {
 
     private int cellphones = 0;
     private int possiblematches = 0;
-    private int totalcellphones = 0;
+    private int totalwebpages = 0;
 
     public Statistics() {
         this.cellphones = 0;
         this.possiblematches = 0;
-        this.totalcellphones = 0;
+        this.totalwebpages = 0;
     }
 
     public float getSuccessRatio() {
@@ -44,16 +44,16 @@ public class Statistics {
         this.possiblematches++;
     }
 
-    public int getTotalCellphones() {
-        return totalcellphones;
+    public int gettotalwebpages() {
+        return totalwebpages;
     }
 
-    public void setTotalCellphones(int totalcellphones) {
-        this.totalcellphones = totalcellphones;
+    public void settotalwebpages(int totalwebpages) {
+        this.totalwebpages = totalwebpages;
     }
 
-    public void addTotalCellphones() {
-        this.totalcellphones++;
+    public void addtotalwebpages() {
+        this.totalwebpages++;
     }
 
 }
