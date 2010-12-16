@@ -8,10 +8,12 @@ public class Statistics {
 
     private int cellphones = 0;
     private int possiblematches = 0;
+    private int totalcellphones = 0;
 
     public Statistics() {
         this.cellphones = 0;
         this.possiblematches = 0;
+        this.totalcellphones = 0;
     }
 
     public float getSuccessRatio() {
@@ -40,6 +42,18 @@ public class Statistics {
 
     public void addPossibleMatch() {
         this.possiblematches++;
+    }
+
+    public int getTotalCellphones() {
+        return totalcellphones;
+    }
+
+    public void setTotalCellphones(int totalcellphones) {
+        this.totalcellphones = totalcellphones;
+    }
+
+    public void addTotalCellphones() {
+        this.totalcellphones++;
     }
 
 }
