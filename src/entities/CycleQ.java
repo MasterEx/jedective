@@ -8,10 +8,11 @@ public class CycleQ {
     
     private String[] elements;
     private int count = 0;
+    private static final int bound = 12;
     
     public CycleQ() {
-        elements = new String[10];
-        for(int i=0;i<10;i++)
+        elements = new String[bound];
+        for(int i=0;i<bound;i++)
             elements[i] = "empty";
     }
     

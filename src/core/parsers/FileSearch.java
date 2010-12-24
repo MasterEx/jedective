@@ -62,6 +62,7 @@ public class FileSearch {
     }
 
     private static void hit(String tmp,CycleQ q,Scanner in,String filename,Statistics stats) {
+        boolean match = false;
          Logger.add(jedective.jedetive.log, filename, 7);
          stats.addCellphone();
          Logger.add(jedective.jedetive.log, tmp, 0);
@@ -71,19 +72,20 @@ public class FileSearch {
                     {
                         Logger.add(jedective.jedetive.log, q.pick(i), 5);
                         Logger.add(jedective.jedetive.log, q.toString(), 1);
-                        stats.addPossibleMatch();
+                        match = true;
                     }
                     if(Matcher.isSurName(q.pick(i)))
                     {
                         Logger.add(jedective.jedetive.log, q.pick(i), 6);
                         Logger.add(jedective.jedetive.log, q.toString(), 2);
-                        stats.addPossibleMatch();
+                        match = true;
                     }
                 }
          int c = 0;
          String line="";
             while(in.hasNext())
             {
+                c++;
                 if(c==bound)
                     break;
                 if(Matcher.isCellphone(tmp=in.next()))
@@ -94,19 +96,23 @@ public class FileSearch {
                 line += " "+tmp;
                 if(Matcher.isName(tmp))
                 {
-                    Logger.add("log.txt", tmp, 5);
-                    Logger.add("log.txt", line, 3);
-                        stats.addPossibleMatch();
-                    break;
+                    Logger.add(jedective.jedetive.log, tmp, 5);
+                    Logger.add(jedective.jedetive.log, line, 3);
+                    match = true;
+                    continue;
                 }
                 if(Matcher.isSurName(tmp))
                 {
-                    Logger.add("log.txt", tmp, 6);
-                    Logger.add("log.txt", line, 4);
-                        stats.addPossibleMatch();
-                    break;
+                    Logger.add(jedective.jedetive.log, tmp, 6);
+                    Logger.add(jedective.jedetive.log, line, 4);
+                    match = true;
+                    continue;
                 }
             }
+        if(match)
+        {
+            stats.addPossibleMatch();
+        }
     }
 
 }

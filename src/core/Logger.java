@@ -22,7 +22,7 @@ public class Logger {
             BufferedWriter out = new BufferedWriter(new FileWriter(fname, true));
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
-            out.write("\t\t\tStatistics\n\n---------------------------------------\nCreated at:"+dateFormat.format(date)+"\n\n");
+            out.write("\n\t\t\tStatistics\n\n---------------------------------------\nCreated at:"+dateFormat.format(date)+"\n\n");
             out.close();
         } catch (IOException ex) {
             //java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
