@@ -1,6 +1,13 @@
 package core;
 
-import entities.Statistics;
+/**
+ * Jedective - a text parser
+ * Copyright (C) 2010-2011 Periklis Ntanasis
+ *
+ * Licensed under GPL license : http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

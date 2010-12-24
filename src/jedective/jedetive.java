@@ -1,6 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Jedective - a text parser
+ * Copyright (C) 2010-2011 Periklis Ntanasis
+ *
+ * Licensed under GPL license : http://www.gnu.org/licenses/gpl.html
+ *
  */
 
 package jedective;
@@ -83,7 +86,11 @@ public class jedetive {
     }
 
     private static void usage() {
-        System.err.printf("Usage: java -jar %s.jar [options] <file>\n"
+        System.err.printf("Jedective Copyright (C) 2010-2011 Periklis Ntanasis\n"
+                + "This program comes with ABSOLUTELY NO WARRANTY.\n"
+                + "This is free software, and you are welcome to redistribute it\n"
+                + "under certain conditions; see http://www.gnu.org/licenses/gpl.html for details.\n\n"
+                + "Usage: java -jar %s.jar [options] <file>\n"
 				  + "\n\tOptions are:\n"
                                   + "\t %s <filename>\tsets the logfile name\n"
 				  + "\t %s\t\tthis help message\n",

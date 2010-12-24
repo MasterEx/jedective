@@ -1,5 +1,13 @@
 package core.parsers;
 
+/**
+ * Jedective - a text parser
+ * Copyright (C) 2010-2011 Periklis Ntanasis
+ *
+ * Licensed under GPL license : http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
 import core.Logger;
 import entities.CycleQ;
 import entities.Statistics;

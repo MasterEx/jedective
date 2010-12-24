@@ -1,6 +1,14 @@
 package entities;
 
 /**
+ * Jedective - a text parser
+ * Copyright (C) 2010-2011 Periklis Ntanasis
+ *
+ * Licensed under GPL license : http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
+/**
  *
  * @author Periklis Ntanasis
  */
