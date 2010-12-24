@@ -1,0 +1,54 @@
+
+			Statistics
+
+---------------------------------------
+Created at:2010/12/24 21:00:21
+
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=960&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=774&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=702&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=1000&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=987&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=840&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/example1.html
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 1(name): Ντανάσης με κινητότηλέφωνο ιούς οι δούρειοι ίπποι δε μεταδίδονται μολύνοντας αρχεία Περικλής
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/example1.html
+Cellphone: +306941234567
+Possible Surname:Παπαχρίστου
+Match 1(surname): Παπαχρίστου με νούμερο κάνει το υποψήφιο θύμα Αν θελετε καλέστε το κύριο
+Possible Name:επιστήμη
+Match 2(name): Τέλος στην επιστήμη
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/demo/example1.html
+Cellphone: 6941234567
+Possible Name:Χρήστο
+Match 2(name): που ανήκει στο κ Χρήστο
+Possible Surname:Παπαφλέσα
+Match 2(surname): που ανήκει στο κ Χρήστο Παπαφλέσα
+
+---------------------------------------
+
+Cellphones Found: 9
+Webpages searched: 36
+Success ratio: 0.33333334
+
+Execution Time: 1 sec
+
+~/END
+Created with Periklis Ntanasis jedective

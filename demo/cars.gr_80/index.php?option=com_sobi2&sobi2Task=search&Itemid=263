@@ -1,0 +1,828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="el-gr" lang="el-gr" dir="ltr" >
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="search, directory, find" />
+  <meta name="description" content="Search function. . Επαγγελματικός Οδηγός" />
+  <meta name="generator" content="Sigsiu Online Business Index -" />
+  <title>Αναζήτηση</title>
+  <link href="http://cars.gr/templates/yoo_flux/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link rel="stylesheet" href="http://cars.gr/components/com_rsform/front.css" type="text/css" media="screen"  />
+  <link rel="stylesheet" href="http://cars.gr/components/com_rsform/calendar/calendar.css" type="text/css" media="screen"  />
+  <link rel="stylesheet" href="http://cars.gr/plugins/system/yoo_effects/lightbox/shadowbox.css" type="text/css" />
+  <link rel="stylesheet" href="http://cars.gr/templates/yoo_flux/css/template.css" type="text/css" />
+  <link rel="stylesheet" href="http://cars.gr/templates/yoo_flux/css/variations/comboleather.css" type="text/css" />
+  <link rel="stylesheet" href="http://cars.gr/templates/yoo_flux/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="http://cars.gr/modules/mod_yoo_login/mod_yoo_login.css.php" type="text/css" />
+  <link rel="stylesheet" href="http://cars.gr/modules/mod_yoo_slider/mod_yoo_slider.css.php" type="text/css" />
+  <style type="text/css">
+    <!--
+.wrapper { width: 1000px; }
+#main-shift { margin-left: 215px; }
+#left { width: 200px; }
+#menu .dropdown { width: 200px; }
+#menu .columns2 { width: 400px; }
+#menu .columns3 { width: 600px; }
+#menu .columns4 { width: 800px; }
+
+    -->
+  </style>
+  <script type="text/javascript" src="http://cars.gr/plugins/system/mtupgrade/mootools.js"></script>
+  <script type="text/javascript" src="http://cars.gr/templates/yoo_flux/warp/js/warp.js"></script>
+  <script type="text/javascript" src="http://cars.gr/templates/yoo_flux/warp/js/accordionmenu.js"></script>
+  <script type="text/javascript" src="http://cars.gr/templates/yoo_flux/warp/js/menu.js"></script>
+  <script type="text/javascript" src="http://cars.gr/templates/yoo_flux/warp/js/fancymenu.js"></script>
+  <script type="text/javascript" src="http://cars.gr/templates/yoo_flux/js/template.js"></script>
+  <script type="text/javascript" src="http://cars.gr/modules/mod_yoo_slider/mod_yoo_slider.js"></script>
+  <script type="text/javascript">
+Warp.Settings = { tplurl: '/templates/yoo_flux', color: 'comboleather' };
+  </script>
+  <link rel="stylesheet" href="http://cars.gr/components/com_sobi2/includes/com_sobi2.css" type="text/css" />
+  <script type="text/javascript" src="http://cars.gr/components/com_sobi2/includes/js/mootools.js"></script>
+  <script type="text/javascript">
+		 /* <![CDATA[ */
+			var Sobi2FieldNames = new Array();
+			
+			Sobi2FieldNames[0] = "field_county";
+			function resetSobi2SearchForm() {
+							fieldsUrl = "http://cars.gr/index2.php?option=com_sobi2&no_html=1&sobi2Task=GetSearchField&Itemid=261&catid=0";
+	            SobiSearchFieldsSendRequest(fieldsUrl,0);
+			
+			var SobiCookieRemove = " = 0; expires=0; path=/;";
+							$('sobi2Search').value = "αναζήτηση ... ";
+				document.cookie = "sobi2SearchCookie[sobi2Search]" + SobiCookieRemove;
+							$("searchphraseany").checked = true;
+				document.cookie = "sobi2SearchCookie[searchphrase]" + SobiCookieRemove;
+							$("sobiCid").value = 0;
+				document.cookie = "sobi2SearchCookie[cid]" + SobiCookieRemove;
+				$("SobiSearchPage").value = 0;
+				document.cookie = "sobi2SearchCookie[SobiSearchPage]" + SobiCookieRemove;
+								for(i=0; i < Sobi2FieldNames.length; i++) {
+					$(Sobi2FieldNames[i]).selectedIndex = 0;
+					document.cookie = "sobi2SearchCookie[" + Sobi2FieldNames[i] + "]" + SobiCookieRemove;
+				}
+								for(SobiSearchFormComboBxCounter; SobiSearchFormComboBxCounter > 0; SobiSearchFormComboBxCounter--) {
+					if(SobiSearchFormComboBxCounter > 0) {
+						chBox = document.getElementById("sdrops_" + SobiSearchFormComboBxCounter);
+						chBox.parentNode.removeChild(chBox);
+					}
+				}
+				SobiSearchFormComboBxCounter = 0;
+				$("SobiCatSelected_0").selectedIndex = 0;
+							}
+		 	window.addEvent('load', function() {
+		 		var sobiSearchResponseContainer = new Fx.Slide('sobiSearchResponseContainer');
+		 					$('sobiSearchFormContainer').addEvent('submit', function(e) {
+					new Event(e).stop();
+					var log = $('sobiSearchResponseContainer').empty().addClass('ajax-loading');
+					var url = "http://cars.gr/index2.php?" + $('sobiSearchFormContainer').toQueryString();
+					var query = new Ajax(url, {
+						method: 'get',
+						onComplete: function() {
+							log.removeClass('ajax-loading');
+						},
+						update: log
+					});
+					query.request();
+							});
+						});
+			var SobiSearchFormComboBxCounter = 0;
+			var SobiSearchFormCatsChilds = new Array();
+			var SobiSearchFormCatsNames = new Array();
+			function addSobiSearchFormCatBox(cid, c) {
+				if(cid == 0) {
+					if(c == 0) {
+						$("sobiCid").value = cid;
+					}
+					else {
+						box = c - 1;
+						$("sobiCid").value = $("SobiCatSelected_" + box).options[$("SobiCatSelected_" + box).selectedIndex].value;
+					}
+					if(c < SobiSearchFormComboBxCounter) {
+						for(SobiSearchFormComboBxCounter; SobiSearchFormComboBxCounter > c; SobiSearchFormComboBxCounter--) {
+							if(SobiSearchFormComboBxCounter > 0) {
+								chBox = document.getElementById("sdrops_" + SobiSearchFormComboBxCounter);
+								chBox.parentNode.removeChild(chBox);
+							}
+						}
+						SobiSearchFormComboBxCounter = c;
+					}
+				}
+				if(cid != 0) {
+					$("sobiCid").value = cid;
+					url = "http://cars.gr/index2.php?option=com_sobi2&no_html=1&sobi2Task=SigsiuTreeMenu&Itemid=261&catid=" + cid;
+					SobiSearchFormComboSendRequest(url,c);
+				}
+			}
+			            function SobiSearchFieldsSendRequest(url,c)
+            {
+            	var SobiSearchFormCatHttpRequest;
+		        if (window.XMLHttpRequest) {
+		        	SobiSearchFieldsHttpRequest = new XMLHttpRequest();
+		              if (SobiSearchFieldsHttpRequest.overrideMimeType) {
+		                SobiSearchFieldsHttpRequest.overrideMimeType('text/xml');
+  		              }
+		            }
+		            else if (window.ActiveXObject) {
+		              try { SobiSearchFieldsHttpRequest = new ActiveXObject("Msxml2.XMLHTTP"); }
+		                catch (e) {
+                              try { SobiSearchFieldsHttpRequest = new ActiveXObject("Microsoft.XMLHTTP"); }
+		                   catch (e) {}
+		                }
+		        }
+		        if (!SobiSearchFieldsHttpRequest) {
+		            alert('Sorry but I Cannot create an XMLHTTP instance');
+		            return false;
+		        }
+		        SobiSearchFieldsHttpRequest.onreadystatechange = function()
+		        {
+					if (SobiSearchFieldsHttpRequest.readyState == 4 && SobiSearchFieldsHttpRequest.status == 200) {
+                             SobiSearchFieldsFill(SobiSearchFieldsHttpRequest,c);
+					}
+				};
+		        SobiSearchFieldsHttpRequest.open('GET', url, true);
+		        SobiSearchFieldsHttpRequest.send(null);
+            }
+			function SobiProcessField(field)
+			{
+				var fieldId = field.getElementsByTagName('fieldId').item(0).firstChild.data;
+			  	fieldId = fieldId.replace("\\", "");
+			  	var fieldValues = field.getElementsByTagName('fieldValue');
+			  	liste = document.getElementById( fieldId );
+				liste.length = 0;
+			  	liste.options[0] = new Option( '', 'all', true, true );
+			  	liste.options[0].innerHTML = '&nbsp;---- επιλογή  ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			  	for( var i = 0; i< fieldValues.length; i++ ) {
+			  		liste.options[liste.length] = new Option( fieldValues[i].firstChild.data, fieldValues[i].firstChild.data, false, false );
+			  	}
+			}
+			function SobiSearchFieldsFill(XMLDoc,c)
+			{
+				if(!XMLDoc.responseXML) { return null; }
+				var r = XMLDoc.responseXML;
+				var fields = r.getElementsByTagName("field");
+				if(fields.length > 0) {
+					for(i = 0; i < fields.length; i++) {
+						var field = fields[i];
+						SobiProcessField(field);
+					}
+				}
+			}
+						function SobiSearchFormComboSendRequest(url,c) {
+		    	var SobiSearchFormCatHttpRequest;
+		        if (window.XMLHttpRequest) {
+		            SobiSearchFormCatHttpRequest = new XMLHttpRequest();
+		            if (SobiSearchFormCatHttpRequest.overrideMimeType) {
+		                SobiSearchFormCatHttpRequest.overrideMimeType('text/xml');
+		            }
+		        }
+		        else if (window.ActiveXObject) {
+		            try { SobiSearchFormCatHttpRequest = new ActiveXObject("Msxml2.XMLHTTP"); }
+		                catch (e) {
+                           try { SobiSearchFormCatHttpRequest = new ActiveXObject("Microsoft.XMLHTTP"); }
+		                   catch (e) {}
+		                 }
+		        }
+		        if (!SobiSearchFormCatHttpRequest) {
+		            alert('Sorry but I Cannot create an XMLHTTP instance');
+		            return false;
+		        }
+		        SobiSearchFormCatHttpRequest.onreadystatechange = function() {
+			  	if (SobiSearchFormCatHttpRequest.readyState == 4 && SobiSearchFormCatHttpRequest.status == 200)
+			    	SobiSearchFormCatGetSubcats(SobiSearchFormCatHttpRequest,c);
+				};
+		        SobiSearchFormCatHttpRequest.open('GET', url, true);
+		        SobiSearchFormCatHttpRequest.send(null);
+			}
+			function SobiSearchFormCatGetSubcats(XMLDoc,c) {
+				if(!XMLDoc.responseXML) {
+					return null;
+				}
+				var r = XMLDoc.responseXML;
+				var categories = r.getElementsByTagName("category");
+				if(c < SobiSearchFormComboBxCounter) {
+					for(SobiSearchFormComboBxCounter; SobiSearchFormComboBxCounter > c; SobiSearchFormComboBxCounter--) {
+						if(SobiSearchFormComboBxCounter > 0) {
+							chBox = document.getElementById("sdrops_" + SobiSearchFormComboBxCounter);
+							chBox.parentNode.removeChild(chBox);
+						}
+					}
+					SobiSearchFormComboBxCounter = c;
+				}
+				if(categories.length > 0) {
+					SobiSearchFormComboBxCounter++;
+					html = "";
+					html = html + "<div id='sdrops_"+SobiSearchFormComboBxCounter+"'><select class='inputbox catChooseBox' id='SobiCatSelected_" + SobiSearchFormComboBxCounter + "' onclick='addSobiSearchFormCatBox(this.options[this.selectedIndex].value," + SobiSearchFormComboBxCounter + ");'><option value='0'>&nbsp;---- επιλογή  ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>"
+					for(i = 0; i < categories.length; i++) {
+						var category = categories[i];
+						var catid = category.getElementsByTagName('catid').item(0).firstChild.data;
+						var name = category.getElementsByTagName('name').item(0).firstChild.data;
+						var childs = category.getElementsByTagName('childs').item(0).firstChild.data;
+						var pid = category.getElementsByTagName('parentid').item(0).firstChild.data;
+						name = name.replace("\\", "");
+						SobiSearchFormCatsNames[catid] = name;
+						html = html + "<option value='"+catid+"'>"+name+"</option>"
+						SobiSearchFormCatsChilds[catid] = childs;
+					}
+					html = html + "</select>\n\n</div>";
+					span = document.createElement("span");
+					span.innerHTML = html;
+					document.getElementById("SobiSearchForm2dropsy").appendChild(span);
+				}
+								fieldsUrl = "http://cars.gr/index2.php?option=com_sobi2&no_html=1&sobi2Task=GetSearchField&Itemid=261&catid=" + $("sobiCid").value;
+	            SobiSearchFieldsSendRequest(fieldsUrl,c);
+							}
+			function sobiSearchRes(page) {
+	 			$('SobiSearchPage').value = page;
+				$('sobiSearchSubmitBt').click();
+			}
+		/* ]]> */
+		</script>
+		<style type="text/css">
+		<!--
+			#sobiSearchResponseContainer.ajax-loading {
+				padding: 20px 0;
+				background: url('http://cars.gr/components/com_sobi2/images/spinner.gif') no-repeat center;
+			}
+		-->
+		 </style>
+  <!-- <base href="_._.html" /> -->
+<script type="text/javascript" src="http://cars.gr/components/com_glossary/js/puretip.js"></script>
+<link type="text/css" rel="stylesheet" href="http://cars.gr/components/com_glossary/css/puretip.css" />
+  <script type="text/javascript" src="http://cars.gr/components/com_ezautos/library/slimbox/js/slimbox.js"></script>
+<link rel="stylesheet" href="http://cars.gr/components/com_ezautos/library/slimbox/css/slimbox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://cars.gr/components/com_ezautos/library/ez_css.css" type="text/css" />
+<script type="text/javascript" src="http://cars.gr/includes/js/overlib_mini.js"></script>
+<script type="text/javascript" src="http://cars.gr/includes/js/mambojavascript.js"></script>
+  <script type="text/javascript">var YOOeffects = { url: 'http://cars.gr/plugins/system/yoo_effects/lightbox/' };</script>
+<script type="text/javascript" src="http://cars.gr/plugins/system/yoo_effects/yoo_effects.js.php?lb=1&re=1&sl=1"></script>
+
+<link rel="apple-touch-icon" href="http://cars.gr/templates/yoo_flux/apple_touch_icon.png" />
+</head>
+
+<body id="page" class="yoopage column-left  ">
+
+	
+	<div id="page-body">
+		<div class="wrapper">
+
+			<div id="header">
+
+				<div id="toolbar">
+				
+									
+										
+										
+				</div>
+				
+				<div id="headerbar">
+				
+										
+										<div class="right">
+						<div class="module mod-blank   first last">
+
+	
+		
+	<script type="text/javascript"><!--
+google_ad_client = "pub-5136892053183037";
+/* 468x60, δημιουργήθηκε 29/10/2009 */
+google_ad_slot = "0871167901";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script> <script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>		
+</div>					</div>
+										
+				</div>
+
+				<div id="menubar">
+					<div class="menubar-2">
+						<div class="menubar-3">
+							<div class="menubar-4"></div>
+						</div>
+					</div>
+				</div>
+
+						
+				<div id="logo">
+					<p><a href="_._.html"><img src="http://cars.gr/images/stories/logo.png" alt="" /></a></p>				</div>
+				
+								<div id="menu">
+					<ul class="menu menu-dropdown"><li class="level1 item1 first"><a href="_._.html" class="level1 item1 first"><span class="bg">Αρχική</span></a></li><li class="level1 item2 parent"><a href="index.php?option=com_content&view=article&id=126&Itemid=236" class="level1 item2 parent"><span class="bg">Αγγελίες</span></a><div class="dropdown columns2" style="width:-2px;"><div class="dropdown-t1"><div class="dropdown-t2"><div class="dropdown-t3"></div></div></div><div class="dropdown-1"><div class="dropdown-2"><div class="dropdown-3"><ul class="col1 level2 first"><li class="level2 item1 first separator parent"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><span class="level2 item1 first separator parent"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconanazitisi2.jpg');">Αναζήτηση</span></span></div></div></div></div><div class="sub"><ul class="level3"><li class="level3 item1 first"><a href="index.php?option=com_content&view=article&id=126&Itemid=251" class="level3 item1 first"><span class="bg">Απλή Αναζήτηση</span></a></li><li class="level3 item2"><a href="index.php?option=com_content&view=article&id=126&Itemid=241" class="level3 item2"><span class="bg">Λεπτομερής Αναζήτηση</span></a></li><li class="level3 item3"><a href="index.php?option=com_content&view=section&id=12&Itemid=238" class="level3 item3"><span class="bg">Πρόσφατες Αγγελίες</span></a></li><li class="level3 item4 last"><a href="index.php?option=com_autosmap&Itemid=247" class="level3 item4 last"><span class="bg">Αναζήτηση Πωλητή</span></a></li></ul></div></div></div></div></div></div></li><li class="level2 item2 last separator parent"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><span class="level2 item2 last separator parent"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconkataxwrisi2.jpg');">Καταχώρηση</span></span></div></div></div></div><div class="sub"><ul class="level3"><li class="level3 item1 first"><a href="http://cars.gr/index.php?option=com_ezautos&Itemid=&task=addnew" class="level3 item1 first"><span class="bg">Καταχώρηση Αγγελίας</span></a></li><li class="level3 item2 last"><a href="index.php?option=com_ezautos&task=terms&Itemid=145" class="level3 item2 last"><span class="bg">Όροι Καταχώρησης</span></a></li></ul></div></div></div></div></div></div></li></ul><ul class="col2 level2 last"><li class="level2 item1 first separator parent"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><span class="level2 item1 first separator parent"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconlogariasmos2.jpg');">Ο λογαριασμός μου</span></span></div></div></div></div><div class="sub"><ul class="level3"><li class="level3 item1 first"><a href="index.php?option=com_ezautos&task=viewlightbox&Itemid=145" class="level3 item1 first"><span class="bg">Οι αγαπημένες μου αγγελίες</span></a></li><li class="level3 item2"><a href="http://cars.gr/index.php?option=com_ezautos&task=editprofile&Itemid=145" class="level3 item2"><span class="bg">Το προφίλ μου</span></a></li><li class="level3 item3"><a href="http://cars.gr/index.php?option=com_ezautos&task=ezpanel&Itemid=145" class="level3 item3"><span class="bg">Σελίδα Διαχείρισης</span></a></li><li class="level3 item4 last"><a href="http://cars.gr/index.php?option=com_ezautos&task=postmylistings&id=62&Itemid=145" class="level3 item4 last"><span class="bg">Στείλε email με αγγελίες</span></a></li></ul></div></div></div></div></div></div></li><li class="level2 item2 last separator parent"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><span class="level2 item2 last separator parent"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconepaggelmaties2.jpg');">Για επαγγελματίες</span></span></div></div></div></div><div class="sub"><ul class="level3"><li class="level3 item1 first"><a href="index.php?option=com_content&view=section&id=12&Itemid=290" class="level3 item1 first"><span class="bg">Για επαγγελματίες</span></a></li><li class="level3 item2 last"><a href="index.php?option=com_ezautos&task=terms&Itemid=145" class="level3 item2 last"><span class="bg">Όροι Καταχώρησης</span></a></li></ul></div></div></div></div></div></div></li></ul></div></div></div><div class="dropdown-b1"><div class="dropdown-b2"><div class="dropdown-b3"></div></div></div></div></li><li class="active level1 item3 parent"><a href="index.php?option=com_sobi2&Itemid=261" class="level1 item3 parent active"><span class="bg">Επαγγελματικός Οδηγός</span></a><div class="dropdown columns2" style="width:-2px;"><div class="dropdown-t1"><div class="dropdown-t2"><div class="dropdown-t3"></div></div></div><div class="dropdown-1"><div class="dropdown-2"><div class="dropdown-3"><ul class="col1 level2 first"><li class="level2 item1 first active current"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><a href="index.php?option=com_sobi2&sobi2Task=search&Itemid=263" class="level2 item1 first active current"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconanazitisi2.jpg');">Αναζήτηση</span></a></div></div></div></div></div></div></div></div></div></li><li class="level2 item2 last"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><a href="index.php?option=com_sobi2&sobi2Task=addNew&Itemid=280" class="level2 item2 last"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconkataxwrisi2.jpg');">Καταχώρηση</span></a></div></div></div></div></div></div></div></div></div></li></ul><ul class="col2 level2 last"><li class="level2 item1 first"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><a href="index.php?option=com_sobi2&Itemid=291" class="level2 item1 first"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconkatigories2.jpg');">Κατηγορίες</span></a></div></div></div></div></div></div></div></div></div></li><li class="level2 item2 last"><div class="group-box1"><div class="group-box2"><div class="group-box3"><div class="group-box4"><div class="group-box5"><div class="hover-box1"><div class="hover-box2"><div class="hover-box3"><div class="hover-box4"><a href="index.php?option=com_content&view=section&id=12&Itemid=290" class="level2 item2 last"><span class="bg icon" style="background-image: url('http://cars.gr/images/stories/1iconepaggelmaties2.jpg');">Για επαγγελματίες</span></a></div></div></div></div></div></div></div></div></div></li></ul></div></div></div><div class="dropdown-b1"><div class="dropdown-b2"><div class="dropdown-b3"></div></div></div></div></li><li class="level1 item4"><a href="index.php?option=com_content&view=section&id=12&Itemid=293" class="level1 item4"><span class="bg">Διαφημιστείτε</span></a></li><li class="level1 item5 last"><a href="index.php?option=com_contact&view=contact&id=1&Itemid=294" class="level1 item5 last"><span class="bg">Επικοινωνία</span></a></li></ul><ul class="menu menu-dropdown mod-dropdown">
+	<li class="level1 parent separator">
+		<span class="level1 parent separator">
+			<span class="bg">Σύνδεση</span>
+		</span>
+		<div class="dropdown columns1" >
+			<div class="dropdown-t1">
+				<div class="dropdown-t2">
+					<div class="dropdown-t3"></div>
+				</div>
+			</div>
+			<div class="dropdown-1">
+				<div class="dropdown-2">
+					<div class="dropdown-3">
+						<ul class="col1 level2 first last">
+							<li class="level2 item1 first last">
+								<div class="group-box1">
+									<div class="group-box2">
+										<div class="group-box3">
+											<div class="group-box4">
+												<div class="group-box5">
+													<div class="hover-box1">
+														<div class="hover-box2">
+															<div class="hover-box3">
+																<div class="hover-box4">
+																	<div class="module">
+<form action="index.php?option=com_sobi2&sobi2Task=search&Itemid=263" method="post" name="login">
+
+<span class="niftyquick" style="display: block;">
+	<span class="yoo-login">
+	
+				<span class="login">
+		
+						
+			<span class="username">
+			
+				<input type="text" name="username" size="18" alt="Όνομα Χρήστη" value="Όνομα Χρήστη" onblur="if(this.value=='') this.value='Όνομα Χρήστη';" onfocus="if(this.value=='Όνομα Χρήστη') this.value='';" />
+				
+			</span>
+			
+			<span class="password">
+			
+				<input type="password" name="passwd" size="10" alt="Κωδικός" value="Κωδικός" onblur="if(this.value=='') this.value='Κωδικός';" onfocus="if(this.value=='Κωδικός') this.value='';" />
+				
+			</span>
+
+						<input type="hidden" name="remember" value="yes" />
+						
+			<span class="login-button">
+				<button value="Σύνδεση" name="Submit" type="submit" title="Σύνδεση">Σύνδεση</button>
+			</span>
+			
+						<span class="lostpassword">
+				<a href="index.php?option=com_user&view=reset" title="Ξεχάσατε τον κωδικό σας;"></a>
+			</span>
+						
+						<span class="lostusername">
+				<a href="index.php?option=com_user&view=remind" title="Ξεχάσατε το όνομα χρήστη;"></a>
+			</span>
+						
+						<span class="registration">
+				<a href="index.php?option=com_user&view=register" title="Δημιουργία λογαριασμού"></a>
+			</span>
+						
+						
+			<input type="hidden" name="option" value="com_user" />
+			<input type="hidden" name="task" value="login" />
+			<input type="hidden" name="return" value="L2luZGV4LnBocD9vcHRpb249Y29tX2NvbnRlbnQmdmlldz1mcm9udHBhZ2UmSXRlbWlkPTI4MQ==" />
+			<input type="hidden" name="38336222d21ca88b58f286d6c954ff60" value="1" />
+		</span>
+		
+				
+	</span>
+</span>
+</form></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="dropdown-b1">
+				<div class="dropdown-b2">
+					<div class="dropdown-b3"></div>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+				</div>
+				
+					
+				
+			</div>
+			<!-- header end -->
+
+			<div class="wrapper-body">
+
+					
+				<div id="middle">
+					<div id="middle-expand">
+					
+						<div id="main">
+							<div id="main-shift">
+							
+																<div id="maintop">
+									<div class="maintopbox float-left width100"><div class="module mod-blank   first last">
+
+	
+		
+	<div class="default-h">
+	<div id="yoo-slider-1" class="yoo-slider default-h" style="height: 90px;">
+
+		<ul class="list">
+				
+						
+			<li class="item item1 first" style="height: 90px;">
+				<div class="slide" style="width: 160px;height: 85px;">
+						<div class="article" style="display: block">
+	<div class="floatbox" style="width: 320px;">
+<div class="float-left" style="width: 120px; height: 98px; padding: 0px 40px 0pt 0pt;"><a href="index.php?option=com_user&view=register"><img height="98" border="0" width="120" src="http://cars.gr/images/stories/buttons/eggrafineoumelous.png" alt="Εγγραφή νέου μέλους" /></a></div>
+<div class="float-left" style="width: 150px; height: 98px; padding-top: 20px;"><strong>Δημιουργία λογαριασμού στο cars.gr </strong> <br />
+Συμπληρώστε τη φόρμα εγγραφής.</div>
+</div>	</div>				</div>
+			</li>
+
+				
+						
+			<li class="item item2" style="height: 90px;">
+				<div class="slide" style="width: 160px;height: 85px;">
+						<div class="article" style="display: block">
+	<div style="width: 320px;" class="floatbox">
+<div style="width: 120px; height: 98px; padding: 0px 40px 0px 0px;" class="float-left"><a href="index.php?option=com_content&view=section&id=12&Itemid=290"><img height="98" border="0" width="120" style="style" alt="alt" src="http://cars.gr/images/stories/buttons/neakataxorisiepagelmatia.png" /></a></div>
+<div style="width: 150px; height: 98px; padding-top: 20px;" class="float-left"><strong>Νέα  εγγραφή στον</strong><strong> κατάλογο </strong><strong> επαγγελματιών.</strong> Συμπληρώστε την φόρμα καταχώρησης επαγγελματία. </div>
+</div>	</div>				</div>
+			</li>
+
+				
+						
+			<li class="item item3" style="height: 90px;">
+				<div class="slide" style="width: 160px;height: 85px;">
+						<div class="article" style="display: block">
+	<div style="width: 320px;" class="floatbox">
+<div style="width: 120px; height: 98px; padding: 0px 40px 0pt 0pt;" class="float-left"><a href="http://cars.gr/index.php?option=com_ezautos&Itemid=&task=addnew"><img height="98" border="0" width="120" alt="alt" src="http://cars.gr/images/stories/buttons/neaaggeliaepagelmaties.png" /></a></div>
+<div style="width: 150px; height: 98px; padding-top: 20px;" class="float-left"><strong>Καταχώρηση αγγελίας ως επαγγελματίας</strong> Συμπληρώστε τη φόρμα αγγελίας ως επαγγελματίας. <br />
+ </div>
+</div>	</div>				</div>
+			</li>
+
+				
+						
+			<li class="item item4 last" style="height: 90px;">
+				<div class="slide" style="width: 160px;height: 85px;">
+						<div class="article" style="display: block">
+	<div class="floatbox" style="width: 320px;">
+<div class="float-left" style="width: 120px; height: 98px; padding: 0px 40px 0pt 0pt;"><a href="http://cars.gr/index.php?option=com_ezautos&Itemid=&task=addnew"><img height="98" border="0" width="120" src="http://cars.gr/images/stories/buttons/neaaggeliaidiotes.png" alt="alt" /></a></div>
+<div class="float-left" style="width: 150px; height: 98px; padding-top: 20px;"><strong>Καταχώρηση αγγελίας ως ιδιώτης</strong> <br />
+Συμπληρώστε την φόρμα νέας αγγελίας ως ιδιώτης.</div>
+</div>	</div>				</div>
+			</li>
+
+				</ul>
+	
+	</div>
+</div><script type="text/javascript">
+// <!--
+window.addEvent('domready', function(){ new YOOslider('yoo-slider-1', '#yoo-slider-1 .slide', { layout: 'horizontal', sizeNormal: 160, sizeFull: 310 }); });
+// -->
+</script>
+		
+</div></div>									
+								</div>
+								<!-- maintop end -->
+									
+								<div class="content-wrapper-t1">
+									<div class="content-wrapper-t2">
+										<div class="content-wrapper-t3">
+										
+																				<div id="breadcrumbs">
+											<span class="breadcrumbs">
+<a href="index.php?option=com_sobi2&Itemid=261" class="box-1"><span class="box-2"><span class="box-3">Επαγγελματικός Οδηγός</span></span></a><span class="box-1"><span class="box-2"><span class="box-3">Αναζήτηση</span></span></span></span>										</div>
+																				
+										</div>
+									</div>
+								</div>
+	
+								<div class="content-wrapper-1">
+									<div class="content-wrapper-2">
+			
+										<div id="mainmiddle">
+											<div id="mainmiddle-expand">
+											
+												<div id="content">
+													<div id="content-shift">
+													
+														
+														<div class="floatbox">
+															
+															
+<!-- Start of Sigsiu Online Business Index 2 component -->
+<div class="componentheading"></div>
+<div class='sobi2'>
+
+
+
+<table class="sobi2Header">
+	<tr>
+		<td id="sobi2HeaderComLink" > <a class="sobi2Header" href="index.php?option=com_sobi2&Itemid=291"></a> </td>
+	</tr>
+</table>
+
+
+
+			<table class="sobi2CompDesc" width="100%">
+				<tr>
+					<td>
+											<img src="http://cars.gr/images/stories/images.jpg"  style="float:right" alt="" title=""/>
+											<h1 id="h2">Επαγγελματικός Οδηγός</h1>					</td>
+				</tr>
+			</table>
+				<form id="sobiSearchFormContainer" accept-charset="utf-8" action="http://cars.gr/index2.php" method="get" name="sobiSearchFormContainer">
+			<table class="sobi2eSearchForm">
+			<tr>
+				<td id="sobi2eSearchLabel">Αναζήτηση για: </td>
+				<td id="sobi2eSearchBox">
+											<input name="sobi2Search" id="sobi2Search" class="inputbox" value="αναζήτηση ... " onclick="if (this.value == 'αναζήτηση ... ') this.value = '';" onblur="if (this.value == '') this.value = 'αναζήτηση ... ';"/>
+									</td>
+				<td id="sobi2eSearchButton">
+											<input type="submit" id="sobiSearchSubmitBt" name="search"  onmousedown="$('SobiSearchPage').value = 0" onkeydown="$('SobiSearchPage').value = 0" class="button" value="Αναζήτηση"/>
+									</td>
+				<td id="sobi2eSearchEmptyCell">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" id="sobi2eSearchPhrases">
+									<input type="radio" checked="checked" name="searchphrase" id="searchphraseany" value="any"   />
+					<label for="searchphraseany">Οποιαδήποτε λέξη</label>
+													<input type="radio"  name="searchphrase" id="searchphraseall" value="all"  />
+					<label for="searchphraseall">Ολες τις λέξεις</label>
+													<input type="radio"  name="searchphrase" id="searchphraseexact" value="exact"  />
+					<label for="searchphraseexact">Ακριβή φράση</label>
+								</td>
+			</tr>
+			<tr>
+				<td colspan="4" id="sobi2eSearchButtonLine">
+													<input type="button" id="sobiSearchFormReset" class="button" name="sobiSearchFormReset" title="Διαγραφή τίτλου αναζήτησης" value="Διαγραφή αναζήτησης" onclick="resetSobi2SearchForm()"/>
+					<br/><br/>
+				</td>
+			</tr>
+			</table>
+			<div id="sobiSearchFormExtOpt">
+			<table class="sobi2eSearchForm">
+									<tr>
+				<td style="vertical-align:top;">Επιλογή Κατηγορίας</td>
+				<td colspan='2'>
+										<div id="SobiSearchForm2dropsy" style="margin-left: 0px;">
+
+
+
+<div id='sdrops_0'>
+<select name="SobiCatSelected_0" id="SobiCatSelected_0" size="1" class="inputbox catChooseBox" onclick="addSobiSearchFormCatBox(this.options[this.selectedIndex].value,0);" >
+	<option value="0" >&nbsp;---- επιλογή  ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	<option value="211" >Πωλήσεις Αυτοκινήτων</option>
+	<option value="14" >Συνεργεία</option>
+	<option value="468" >Φανοποιείο - Βαφές</option>
+	<option value="32" >Βουλκανιζατέρ</option>
+	<option value="41" >Ανταλλακτικά</option>
+	<option value="26" >Ηλεκτρολογείο</option>
+	<option value="45" >Αξεσουάρ</option>
+	<option value="36" >Μετατροπές - Βελτιώσεις</option>
+	<option value="33" >Εμποριο Ζαντων και Ελαστικών</option>
+	<option value="27" >Συναγερμοί - Ηχητικά Συστήματα</option>
+	<option value="72" >Υπηρεσίες</option>
+	<option value="73" >Ενοικίαση</option>
+	<option value="58" >Επισκευές</option>
+	<option value="28" >Air Condition - Ψυγεία</option>
+	<option value="31" >Ταπετσαρίες - Δερμάτινα Σαλόνια</option>
+	<option value="34" >Παρμπρίζ - Κρύσταλα</option>
+	<option value="51" >Κοντέρ - Ταχογράφοι - Ταξίμετρα</option>
+	<option value="480" >Εργαλεία και Μηχανήματα για Επαγγελματίες</option>
+</select>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+ 
+ SobiSearchFormCatsChilds[211] = '1';
+ SobiSearchFormCatsChilds[14] = '1';
+ SobiSearchFormCatsChilds[468] = '1';
+ SobiSearchFormCatsChilds[32] = '0';
+ SobiSearchFormCatsChilds[41] = '1';
+ SobiSearchFormCatsChilds[26] = '0';
+ SobiSearchFormCatsChilds[45] = '1';
+ SobiSearchFormCatsChilds[36] = '1';
+ SobiSearchFormCatsChilds[33] = '0';
+ SobiSearchFormCatsChilds[27] = '0';
+ SobiSearchFormCatsChilds[72] = '1';
+ SobiSearchFormCatsChilds[73] = '1';
+ SobiSearchFormCatsChilds[58] = '1';
+ SobiSearchFormCatsChilds[28] = '0';
+ SobiSearchFormCatsChilds[31] = '0';
+ SobiSearchFormCatsChilds[34] = '0';
+ SobiSearchFormCatsChilds[51] = '0';
+ SobiSearchFormCatsChilds[480] = '0';
+
+ SobiSearchFormComboBxCounter = 0; 
+
+</script></div>								</td>
+			</tr>
+						<tr><td class="sobi2eSearchLabel">Νομός</td><td colspan="2">
+<select name="field_county" size="1" class="inputbox" id="field_county" >
+	<option value="all" >&nbsp;---- επιλογή  ----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	<option value="field_federal_state_opt_54" >--Επιλέξτε Νομό--</option>
+	<option value="field_federal_state_opt_1" >ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ</option>
+	<option value="field_federal_state_opt_3" >ΑΡΓΟΛΙΔΑΣ</option>
+	<option value="field_federal_state_opt_4" >ΑΡΚΑΔΙΑΣ</option>
+	<option value="field_federal_state_opt_5" >ΑΡΤΑΣ</option>
+	<option value="field_federal_state_opt_2" >ΑΤΤΙΚΗΣ</option>
+	<option value="field_federal_state_opt_6" >ΑΧΑΪΑΣ</option>
+	<option value="field_federal_state_opt_7" >ΒΟΙΩΤΙΑΣ</option>
+	<option value="field_federal_state_opt_8" >ΓΡΕΒΕΝΩΝ</option>
+	<option value="field_federal_state_opt_9" >ΔΡΑΜΑΣ</option>
+	<option value="field_federal_state_opt_11" >ΔΩΔΕΚΑΝΗΣΟΥ</option>
+	<option value="field_federal_state_opt_12" >ΕΒΡΟΥ</option>
+	<option value="field_federal_state_opt_13" >ΕΥΒΟΙΑΣ</option>
+	<option value="field_federal_state_opt_14" >ΕΥΡΥΤΑΝΙΑΣ</option>
+	<option value="field_federal_state_opt_15" >ΖΑΚΥΝΘΟΥ</option>
+	<option value="field_federal_state_opt_16" >ΗΛΕΙΑΣ</option>
+	<option value="field_federal_state_opt_17" >ΗΜΑΘΙΑΣ</option>
+	<option value="field_federal_state_opt_18" >ΗΡΑΚΛΕΙΟΥ</option>
+	<option value="field_federal_state_opt_20" >ΘΕΣΠΡΩΤΙΑΣ</option>
+	<option value="field_federal_state_opt_19" >ΘΕΣΣΑΛΟΝΙΚΗΣ</option>
+	<option value="field_federal_state_opt_21" >ΙΩΑΝΝΙΝΩΝ</option>
+	<option value="field_federal_state_opt_22" >ΚΑΒΑΛΑΣ</option>
+	<option value="field_federal_state_opt_23" >ΚΑΡΔΙΤΣΑΣ</option>
+	<option value="field_federal_state_opt_24" >ΚΑΣΤΟΡΙΑΣ</option>
+	<option value="field_federal_state_opt_25" >ΚΕΡΚΥΡΑΣ</option>
+	<option value="field_federal_state_opt_26" >ΚΕΦΑΛΛΗΝΙΑΣ</option>
+	<option value="field_federal_state_opt_27" >ΚΙΛΚΙΣ</option>
+	<option value="field_federal_state_opt_28" >ΚΟΖΑΝΗΣ</option>
+	<option value="field_federal_state_opt_29" >ΚΟΡΙΝΘΙΑΣ</option>
+	<option value="field_federal_state_opt_30" >ΚΥΚΛΑΔΩΝ</option>
+	<option value="field_federal_state_opt_31" >ΛΑΚΩΝΙΑΣ</option>
+	<option value="field_federal_state_opt_32" >ΛΑΡΙΣΗΣ</option>
+	<option value="field_federal_state_opt_33" >ΛΑΣΙΘΙΟΥ</option>
+	<option value="field_federal_state_opt_34" >ΛΕΣΒΟΥ</option>
+	<option value="field_federal_state_opt_35" >ΛΕΥΚΑΔΟΣ</option>
+	<option value="field_federal_state_opt_36" >ΜΑΓΝΗΣΙΑΣ</option>
+	<option value="field_federal_state_opt_37" >ΜΕΣΣΗΝΙΑΣ</option>
+	<option value="field_federal_state_opt_38" >ΞΑΝΘΗΣ</option>
+	<option value="field_federal_state_opt_39" >ΠΕΙΡΑΙΩΣ</option>
+	<option value="field_federal_state_opt_40" >ΠΕΛΛΗΣ</option>
+	<option value="field_federal_state_opt_41" >ΠΙΕΡΙΑΣ</option>
+	<option value="field_federal_state_opt_42" >ΠΡΕΒΕΖΗΣ</option>
+	<option value="field_federal_state_opt_43" >ΡΕΘΥΜΝΗΣ</option>
+	<option value="field_federal_state_opt_44" >ΡΟΔΟΠΗΣ</option>
+	<option value="field_federal_state_opt_45" >ΣΑΜΟΥ</option>
+	<option value="field_federal_state_opt_46" >ΣΕΡΡΩΝ</option>
+	<option value="field_federal_state_opt_47" >ΤΡΙΚΑΛΩΝ</option>
+	<option value="field_federal_state_opt_48" >ΦΘΙΩΤΙΔΟΣ</option>
+	<option value="field_federal_state_opt_49" >ΦΛΩΡΙΝΗΣ</option>
+	<option value="field_federal_state_opt_50" >ΦΩΚΙΔΟΣ</option>
+	<option value="field_federal_state_opt_51" >ΧΑΛΚΙΔΙΚΗΣ</option>
+	<option value="field_federal_state_opt_52" >ΧΑΝΙΩΝ</option>
+	<option value="field_federal_state_opt_53" >ΧΙΟΥ</option>
+</select>
+</td></tr>			</table>
+			</div>
+						<input type="hidden" name="option" value="com_sobi2"/>
+			<input type="hidden" name="Itemid" value="261"/>
+			<input type="hidden" name="no_html" value="1"/>
+			<input type="hidden" name="sobi2Task" value="axSearch"/>
+			<input type="hidden" name="sobiCid" id="sobiCid" value="0"/>
+			<input type="hidden" id="SobiSearchPage" name="SobiSearchPage" value="0"/>
+	</form>
+	<div id="sobiSearchResponseContainer"></div>
+	
+ <table class="sobi2Footer"> 
+	 <tr><td id="sobi2Footer"></td>	 <td id="sobi2rss"></td></tr>	 <tr><td colspan="2"></td></tr>
+ </table>
+
+ </div> 
+
+<!-- end of Sigsiu Online Business Index 2 component Memory 6,835,240 / Time 0,0625460147858 / Queries: 0 --> 
+
+														</div>
+							
+														<div style="display:none;"><a href="../www.wootem.ru_80/_._.html">Templates</a></div>
+													
+													</div>
+												</div>
+												<!-- content end -->
+												
+																								
+																								
+											</div>
+										</div>
+										<!-- mainmiddle end -->
+			
+									</div>
+								</div>
+	
+								<div class="content-wrapper-b1">
+									<div class="content-wrapper-b2">
+										<div class="content-wrapper-b3"></div>
+									</div>
+								</div>
+	
+																<div id="mainbottom">
+									<div class="mainbottombox float-left width100"><div class="module mod-blank   first last">
+
+	
+		
+	<script type="text/javascript"><!--
+google_ad_client = "pub-5136892053183037";
+/* 468x60, δημιουργήθηκε 29/10/2009 */
+google_ad_slot = "0871167901";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script> <script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>		
+</div></div>								</div>
+								<!-- mainbottom end -->
+															
+							</div>
+						</div>
+						
+												<div id="left">
+							<div class="module mod-black mod-menu mod-menu-black   first ">
+
+		<h3 class="header"><span class="header-2"><span class="header-3"><span class="color">Επαγγελματικός</span> Οδηγός</span></span></h3>
+	
+	
+	<div class="box-t1">
+		<div class="box-t2">
+			<div class="box-t3"></div>
+		</div>
+	</div>
+
+	<div class="box-1 deepest with-header">
+		<ul class="menu"><li class="level1 item1 first"><a href="http://cars.gr/index.php?option=com_sobi2&catid=211&Itemid=264" class="level1 item1 first"><span class="bg">Πωλήσεις Αυτοκινήτων</span></a></li><li class="level1 item2"><a href="http://cars.gr/index.php?option=com_sobi2&catid=26&Itemid=265" class="level1 item2"><span class="bg">Ηλεκτρολόγιο</span></a></li><li class="level1 item3"><a href="http://cars.gr/index.php?option=com_sobi2&catid=45&Itemid=266" class="level1 item3"><span class="bg">Αξεσουάρ</span></a></li><li class="level1 item4"><a href="http://cars.gr/index.php?option=com_sobi2&catid=36&Itemid=267" class="level1 item4"><span class="bg">Μετατροπές - Βελτιώσεις</span></a></li><li class="level1 item5"><a href="http://cars.gr/index.php?option=com_sobi2&catid=468&Itemid=268" class="level1 item5"><span class="bg">Φανοποιείο - Βαφές</span></a></li><li class="level1 item6"><a href="http://cars.gr/index.php?option=com_sobi2&catid=32&Itemid=269" class="level1 item6"><span class="bg">Βουλκανιζατέρ</span></a></li><li class="level1 item7"><a href="http://cars.gr/index.php?option=com_sobi2&catid=14&Itemid=270" class="level1 item7"><span class="bg">Συνεργεία</span></a></li><li class="level1 item8"><a href="http://cars.gr/index.php?option=com_sobi2&catid=27&Itemid=271" class="level1 item8"><span class="bg">Συναγερμοί - Ηχ.Συστήματα</span></a></li><li class="level1 item9"><a href="http://cars.gr/index.php?option=com_sobi2&catid=33&Itemid=272" class="level1 item9"><span class="bg">Ζάντες και Ελαστικά</span></a></li><li class="level1 item10"><a href="http://cars.gr/index.php?option=com_sobi2&catid=72&Itemid=273" class="level1 item10"><span class="bg">Υπηρεσίες</span></a></li><li class="level1 item11"><a href="http://cars.gr/index.php?option=com_sobi2&catid=73&Itemid=274" class="level1 item11"><span class="bg">Ενοικίαση</span></a></li><li class="level1 item12"><a href="http://cars.gr/index.php?option=com_sobi2&catid=58&Itemid=275" class="level1 item12"><span class="bg">Επισκευές</span></a></li><li class="level1 item13"><a href="http://cars.gr/index.php?option=com_sobi2&catid=28&Itemid=276" class="level1 item13"><span class="bg">Air Condition - Ψυγεία</span></a></li><li class="level1 item14"><a href="http://cars.gr/index.php?option=com_sobi2&catid=31&Itemid=277" class="level1 item14"><span class="bg">Ταπετσαρίες-Δερμ. Σαλόνια</span></a></li><li class="level1 item15"><a href="http://cars.gr/index.php?option=com_sobi2&catid=34&Itemid=278" class="level1 item15"><span class="bg">Παρμπρίζ - Κρύσταλα</span></a></li><li class="level1 item16 last"><a href="http://cars.gr/index.php?option=com_sobi2&catid=51&Itemid=279" class="level1 item16 last"><span class="bg">Κοντέρ-Ταχογράφοι-Ταξίμετρα</span></a></li></ul>	</div>
+
+	<div class="box-b1">
+		<div class="box-b2">
+			<div class="box-b3"></div>
+		</div>
+	</div>
+		
+</div><div class="module mod-rounded mod-rounded-header mod-rounded-grey mod-rounded-header-grey   last">
+
+	<div class="header-1">
+		<div class="header-2">
+			<div class="header-3"></div>
+		</div>
+	</div>
+
+		<h3 class="header"><span class="icon icon-users"></span><span class="color">Συνδεδεμένοι</span> χρήστες</h3>
+	
+	
+	<div class="box-t1">
+		<div class="box-t2">
+			<div class="box-t3"></div>
+		</div>
+	</div>
+	
+	<div class="box-1">
+		<div class="box-2 deepest">
+			 Έχουμε&nbsp;202 επισκέπτες&nbsp;και&nbsp;1 μέλος&nbsp;συνδεδεμένους		</div>
+	</div>
+
+	<div class="box-b1">
+		<div class="box-b2">
+			<div class="box-b3"></div>
+		</div>
+	</div>
+		
+</div>						</div>
+												
+												
+					</div>
+				</div>
+	
+				
+			</div>
+
+		</div>
+	</div>
+
+	<div id="page-footer">
+		<div class="wrapper">
+
+			<div id="footer">
+				<a class="anchor" href="#page"></a>
+				<ul class="menu"><li class="level1 item1 first"><a href="index.php?option=com_content&view=section&id=12&Itemid=282" class="level1 item1 first"><span class="bg">Σχετικά με εμάς</span></a></li><li class="level1 item2"><a href="index.php?option=com_content&view=section&id=12&Itemid=293" class="level1 item2"><span class="bg">Διαφημιστείτε</span></a></li><li class="level1 item3"><a href="index.php?option=com_content&view=section&id=12&Itemid=290" class="level1 item3"><span class="bg">Για επαγγελματίες</span></a></li><li class="level1 item4 last"><a href="index.php?option=com_contact&view=contact&id=1&Itemid=294" class="level1 item4 last"><span class="bg">Επικοινωνία</span></a></li></ul>							</div>
+			<!-- footer end -->
+
+		</div>
+	</div>
+	
+</body>
+</html>
