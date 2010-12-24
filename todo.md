@@ -1,6 +1,5 @@
 TODO
 ====
-* Add license
-* Add readme and some project documentation
+* Add readme 
 * Maybe supress jericho warnings
 * Fix file filter bug
