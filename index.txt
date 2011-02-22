@@ -1,0 +1,64 @@
+Jedective
+=========
+Periklis Ntanasis <pntanasis@gmail.com>
+:Author Initials: PKN
+:toc:
+:numbered:
+:website: https://github.com/MasterEx/jedective
+
+Abstract
+--------
+
+Jedective is a text parser written in Java and is licensed under http://www.gnu.org/licenses/gpl.html[GPL] license. 
+It's purpose is to locate cellphones in a given set of (html) files and 
+then match them with names (possible owners).
+
+Jedective is implemented for Greek cellphones and names!
+
+Project Goal
+------------
+
+The goal of this project is to conclude if the Greek internet user group
+is protecting appropriately it's personal information (such as name,surname
+,home address,phone,cellphone,e.t.c.).
+
+In order to conclude the above we are parsing Greek web pages for important
+personal informations, more precisely with cellphones and correlate them 
+with individuals.
+
+How it works
+------------
+
+Jedective is written in Java.
+
+The parsing consists of the following steps:
+
+. We feed it with an html file or a set of html files.
+. Reads the html files one by one.
+. Converts the html into plain text with the http://jericho.htmlparser.net/docs/index.html[jericho API].
+. Parses the text until it finds a cellphone.
+. Tries to find greek names or surnames before and after the cellphone.
+. Creates a log with the search results.
+
+=== How it finds the Greek names ===
+
+Jedective has its own database of Greek names (entities.GreekNames.java).
+It consists of all common greek names found http://www.foundalis.com/grk/EllinikaOnomata.html[here].
+The names have been modified with regex in order to have better results
+(http://en.wikipedia.org/wiki/Stemming[stemming]).
+
+For finding Greek surnames jedective also uses regex with the most common
+Greek surnames prefixes and postfixes.
+
+=== Further convertion ===
+
+Except the html to text conversion jedective also removes other stopwards
+such as punctuation to accomplish better results.
+
+Acknowledgement 
+---------------
+
+Jedective was written by Periklis Ntanasis and it is a part of a university
+ project supervised by http://pages.cs.aueb.gr/~marias/[Giannis F. Marias].
+
+Special thanks to https://github.com/c00kiemon5ter[Ivan Kanakarakis] for proposing jedective as a project name.
