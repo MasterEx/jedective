@@ -1,0 +1,6 @@
+*
+!.gitignore
+!todo.md
+!README.md
+!src/
+!demo/
