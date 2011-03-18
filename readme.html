@@ -1,0 +1,1125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.4" />
+<title>Jedective</title>
+<style type="text/css">
+/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes(); asciidoc.toc(2);}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Jedective</h1>
+<span id="author">Periklis Ntanasis</span><br />
+<span id="email"><tt>&lt;<a href="mailto:pntanasis@gmail.com">pntanasis@gmail.com</a>&gt;</tt></span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>We are going to use <a href="http://www.pavuk.org/">pavuk</a> web crawler to download
+a corpus of Greek web pages and then we are going to use
+<a href="http://masterex.github.com/jedective/">Jedective</a> parser to extract the
+statistics about the cellphones and other personal data appearance ratio.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation">2. Installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_pavuk">2.1. Pavuk</h3>
+<div class="paragraph"><p>First of all we need to install pavuk. You can download pavuk from
+<a href="http://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/">here</a>.</p></div>
+<div class="sect3">
+<h4 id="_windows">2.1.1. Windows</h4>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Pavuk Windows README</div>
+<div class="paragraph"><p>Pavuk is World Wide Web graber (mirroring tool for FTP/HTTP/Gopher/(SSL)).
+Pavuk was originaly writen for UNIX environment.</p></div>
+<div class="paragraph"><p>This port of pavuk was made by using of gnu-win32 alias cygwin development
+environment.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>check out http://sourceware.cygnus.com/cygwin/</tt></pre>
+</div></div>
+<div class="paragraph"><p>This package contains executable file pavuk.exe and cygwin1.dll &amp; cygz.dll
+(from cygwin net release 1.3.2) libraries taken from cygwin.
+To use pavuk in Windows, just copy this files to some directory and use it.
+It doesn&#8217;t need any other instalation steps.</p></div>
+<div class="paragraph"><p>Pavuk-gnu-win32 is comand line driven program so grab manual page from
+source distribution and check syntax or look into pavuk.html file.</p></div>
+<div class="paragraph"><p>This win32 port of pavuk is full featured version. It lacks only GUI.
+If you want Win32 pavuk with GUI download file pavuk-win32gui-0.9pl28.exe</p></div>
+<div class="paragraph"><p><strong>!!!! WARNING !!!!</strong></p></div>
+<div class="paragraph"><p>This version of pavuk was compiled with new cygwin POSIX runtime. It have
+significant changes in file paths handling, so please check your scenarios
+and correct paths if you was using old cygwin paths //[drive]/ to
+/cygdrive/[drive]/</p></div>
+<div class="paragraph"><p><strong>!!!! WARNING !!!!</strong></p></div>
+<div class="paragraph"><p>For new informations check pavuk homepage at URL:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>http://pavuk.sourceforge.net/</tt></pre>
+</div></div>
+<div class="paragraph"><p>Stevo Ondrejicka</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_linux">2.1.2. Linux</h4>
+<div class="paragraph"><p>Many Linux distributions contain pavuk in their repositories.</p></div>
+<div class="paragraph"><div class="title">Ubuntu 10.10</div><p><a href="http://ns2.canonical.com/hu/maverick/web/pavuk">Package: pavuk (0.9.35-2.1ubuntu1)</a></p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>apt-get install pavuk</tt></pre></div></div>
+<div class="paragraph"><div class="title">Debian 6.0</div><p><a href="http://packages.debian.org/squeeze/pavuk">Package: pavuk (0.9.35-2.1)</a></p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>apt-get install pavuk</tt></pre></div></div>
+<div class="paragraph"><div class="title">ArchLinux</div><p><a href="http://aur.archlinux.org/packages.php?ID=22641">pavuk 0.9.35-4</a></p></div>
+<div class="paragraph"><p>You may download it and install it from
+<a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR</a>.</p></div>
+<div class="paragraph"><div class="title">Installing from source</div><p>You can also install the later version of pavuk from source. Download
+the latest version of pavuk from
+<a href="http://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/">sourceforge</a>.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">INSTALL README</div>
+<div class="paragraph"><p><strong>pavuk0.9 installation</strong></p></div>
+<div class="paragraph"><p><strong>What you need:</strong></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+GCC or other ANSI C compiler (Digital OSF/1 3.2 cc successfuly tesed)
+</p>
+</li>
+<li>
+<p>
+optionaly X11 libraries - R5 and R6 tested
+</p>
+</li>
+<li>
+<p>
+optionaly GTK libraries (1.0.0 or heigher required, older may not work
+                           because of API changes and new widgets)
+                           when you want multithreading support, you need
+                           at least version 1.2.0
+</p>
+</li>
+<li>
+<p>
+optionaly SSLeay or OpenSSL package -
+                           when you plan to use pavuk for mirroring and or
+                           transfering documents via HTTPS (SSL) , you need
+                           to have installed SSLeay package at least v0.8.0
+</p>
+</li>
+<li>
+<p>
+optionaly SOCKS 4 or 5 package for supporting your SOCKS firewall
+</p>
+</li>
+<li>
+<p>
+optionaly GNU gettext library for internationalized messages support
+</p>
+</li>
+<li>
+<p>
+optionaly support for regular expressions in libc (POSIX, GNU, BSD,
+          Bell V8 or PCRE implementation)
+</p>
+</li>
+<li>
+<p>
+optionaly Berkeley db 1.8x library to support loading files from
+          Netscape or Mozilla browser cache directory
+</p>
+</li>
+<li>
+<p>
+optionaly zlib library to support document decoding without calling
+          gzip program
+</p>
+</li>
+<li>
+<p>
+optionaly pthread (POSIX threads) library for support multithreading
+          (in this case all other used libraries should be compiled and
+           designed to support multithreading - mainly X and GTK)
+</p>
+</li>
+<li>
+<p>
+optionaly libdes or OpenSSL libcrypto to support NTLM authorization
+</p>
+</li>
+<li>
+<p>
+optionaly Mozillas JavaScript runtime library libjs to support
+          JavaScript bindings
+</p>
+</li>
+<li>
+<p>
+optionaly Netscape/Mozilla NSS3 and NSPR libraries to support SSL
+          when you can&#8217;t or don&#8217;t want to use OpenSSL which is not GPL
+          compatible
+</p>
+</li>
+<li>
+<p>
+optionaly libmcrypt or libgrypt libraries (with DES support) to
+          support NTLM authorization and don&#8217;t want to link with libcrypt
+          which is part of OpenSSL which is not GPL compatible
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><strong>Installing</strong></p></div>
+<div class="paragraph"><p>type
+        tar -xzvf pavuk-0.9.tgz
+or
+        gunzip -c pavuk-0.9.tgz | tar -xf -
+to unpack source</p></div>
+<div class="paragraph"><p>Change directory to pavuk-0.9 and type</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>./configure</tt></pre>
+</div></div>
+<div class="paragraph"><p>to configure package for your system setup. Configure script accepts some
+extra options, to allow better tunning of pavuk features:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>--enable-threads - to enable compilation with multithreading support
+--disable-socks  - to disable compilation of SOCKS support
+--disable-gtk    - to disable compilation of GTK interface
+--disable-ssl    - to disable compilation of SSL support
+--disable-nls    - to disable compilation with gettext NLS
+--disable-debug  - to disable compilation with debuging support
+--disable-gnome  - to deny instalation of pavuks Gnome related files
+--disable-ntlm   - do not compile with NTLM auth support
+--disable-tree   - do not compile with tree preview
+                   (saves a lot of memory when running GUI)
+--disable-js     - to disable compilation of JavaScript bindings support
+--disable-ipv6   - to disable support of IPv6 protocol
+--with-*-includes - you should specify location of header
+                    files for optionals packages
+                    (ssl,gtk,intl,zlib,socks,js)
+--with-*-libraries - you should specify location of libraries
+                     for optional packages
+                     (ssl,gtk,intl,zlib,socks,js)
+--with-locale-dir - path to your locale directory
+--with-regex=[none/auto/posix/gnu/v8/bsd/pcre]
+                 - for selecting required regular expressions
+                   implemetation, if your system contains multiple
+                   supported implementation
+--with-ssl=[none/auto/openssl/ssleay/nss]
+                 - for selecting requested SSL library implementation
+--with-desimpl=[none/auto/libcrypto/libdes/libmcrypt/libgcrypt]
+                 - for selecting requested DES algorithm implementation
+                   library
+--with-egd-socket=NAME - use NAME for the EGD socket</tt></pre>
+</div></div>
+<div class="paragraph"><p>for more options check configure --help</p></div>
+<div class="paragraph"><p>to compile package, type at commandline</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>make</tt></pre>
+</div></div>
+<div class="paragraph"><p>to install package, type at commandline</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>make install</tt></pre>
+</div></div>
+<div class="paragraph"><p>This will copy pavuk binary, manual page, message catalogs and other files to
+destination directories.</p></div>
+<div class="paragraph"><p>Feel free to email me if you have some problems with pavuk instalation
+or use.</p></div>
+<div class="paragraph"><p>If you can&#8217;t succesfuly build this program please contact me via email :
+&lt;<a href="mailto:ondrej@idata.sk">ondrej@idata.sk</a>&gt;.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jedective">2.2. Jedective</h3>
+<div class="paragraph"><p><a href="https://github.com/MasterEx/jedective">Jedective</a> is written in Java and
+you can simply download the prebuild .jar from
+<a href="https://github.com/MasterEx/jedective/archives/master">github</a>.</p></div>
+<div class="paragraph"><p>No further installation is needed.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_crawling_and_parsing">3. Crawling and Parsing</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Here we will explain how we can download a set of webpages and then parse
+them for cellphones and match the findings with possible owner names.</p></div>
+<div class="sect2">
+<h3 id="_crawling">3.1. Crawling</h3>
+<div class="paragraph"><p>Let&#8217;s say there is a start webpage <a href="http://www.example.com">http://www.example.com</a> from where we
+will begin our crawling.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>pavuk http<span style="color: #990000">:</span>//www<span style="color: #990000">.</span>example<span style="color: #990000">.</span>com -sleep <span style="color: #993399">1</span> -noRobots -noFTP -noGopher -noEnc
+-noRelocate -asite www<span style="color: #990000">.</span>example<span style="color: #990000">.</span>com -logfile log/log -slogfile log/short<span style="color: #990000">.</span>log
+-noread_css -noencode -store_info -info_dir info<span style="color: #990000">/</span> -nthreads <span style="color: #993399">7</span>
+-auto_referer -amimet text/html<span style="color: #990000">,</span>text/plain<span style="color: #990000">,</span>text/richtext<span style="color: #990000">,</span>text/rtf<span style="color: #990000">,</span>text/xml<span style="color: #990000">,</span><span style="color: #FF0000">"text/html*"</span>
+-disable_js -index_name page_index -remove_adv</tt></pre></div></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Switches used</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">sleep</p></td>
+<td align="left" valign="top"><p class="table">1 sec sleep between every http request</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noRobots</p></td>
+<td align="left" valign="top"><p class="table">ignore robots.txt</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noFTP</p></td>
+<td align="left" valign="top"><p class="table">don&#8217;t use ftp</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noGopher</p></td>
+<td align="left" valign="top"><p class="table">don&#8217;t use gopher</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noEnc</p></td>
+<td align="left" valign="top"><p class="table">This  switch  suppresses  using  of  gzip or compress or deflate
+encoding in transfer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noRelocate</p></td>
+<td align="left" valign="top"><p class="table">This switch prevents the program to  rewrite  relative  URLs  to
+absolute,  after  HTML  document  is  transfered</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">asite</p></td>
+<td align="left" valign="top"><p class="table">download pages only from the domain www.example.com</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">logfile</p></td>
+<td align="left" valign="top"><p class="table">log everything</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">slogfile</p></td>
+<td align="left" valign="top"><p class="table">create a short log</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noread_css</p></td>
+<td align="left" valign="top"><p class="table">don&#8217;t download css files</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">noencode</p></td>
+<td align="left" valign="top"><p class="table">Do not escape characters that are "unsafe" in URLS</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">store_info</p></td>
+<td align="left" valign="top"><p class="table">buil an index</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">nthreads</p></td>
+<td align="left" valign="top"><p class="table">use 7 threads - works if it is compiled with multithreading support on</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">auto_referer</p></td>
+<td align="left" valign="top"><p class="table">This option forces pavuk to send HTTP Referer: header field with
+starting URLs</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">amimet</p></td>
+<td align="left" valign="top"><p class="table">download only html files</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">disable_js</p></td>
+<td align="left" valign="top"><p class="table">don&#8217;t download javascript</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">index_name</p></td>
+<td align="left" valign="top"><p class="table">changes index.{*} to page_index</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">remove_adv</p></td>
+<td align="left" valign="top"><p class="table">remove advertises</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>You may find more informations about http header
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">here</a>.</p></div>
+<div class="paragraph"><p>You can see a short list of pavuk&#8217;s switches by using the -h argument:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>pavuk -h</tt></pre></div></div>
+<div class="paragraph"><p>or a most extensive by reading it&#8217;s man page in linux systems:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>man pavuk</tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_parsing">3.2. Parsing</h3>
+<div class="paragraph"><p>The html files will be stored in a directory named "http".</p></div>
+<div class="listingblock">
+<div class="title">Jedective Usage</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>java -jar jedective<span style="color: #990000">.</span>jar <span style="font-weight: bold"><span style="color: #0000FF">help</span></span>
+Jedective Copyright <span style="color: #990000">(</span>C<span style="color: #990000">)</span> <span style="color: #993399">2010</span>-<span style="color: #993399">2011</span> Periklis Ntanasis
+This program comes with ABSOLUTELY NO WARRANTY<span style="color: #990000">.</span>
+This is free software<span style="color: #990000">,</span> and you are welcome to redistribute it
+under certain conditions<span style="color: #990000">;</span> see http<span style="color: #990000">:</span>//www<span style="color: #990000">.</span>gnu<span style="color: #990000">.</span>org/licenses/gpl<span style="color: #990000">.</span>html <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> details<span style="color: #990000">.</span>
+
+Usage<span style="color: #990000">:</span> java -jar jedetive<span style="color: #990000">.</span>jar <span style="color: #990000">[</span>options<span style="color: #990000">]</span> <span style="color: #990000">&lt;</span>file<span style="color: #990000">&gt;</span>
+
+        Options are<span style="color: #990000">:</span>
+         out <span style="color: #990000">&lt;</span>filename<span style="color: #990000">&gt;</span> sets the logfile name
+         <span style="font-weight: bold"><span style="color: #0000FF">help</span></span>           this <span style="font-weight: bold"><span style="color: #0000FF">help</span></span> message</tt></pre></div></div>
+<div class="paragraph"><p>So we can run jedective to a hole directory as:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>java -jar jedective<span style="color: #990000">.</span>jar <span style="color: #990000">.</span>/demo<span style="color: #990000">/</span></tt></pre></div></div>
+<div class="paragraph"><p>or to a specific file as:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>java -jar jedective<span style="color: #990000">.</span>jar <span style="color: #990000">.</span>/demo/example<span style="color: #990000">.</span>html</tt></pre></div></div>
+<div class="paragraph"><p>If we run the above two commands we the exact order there will be produced
+a log.txt in our current directory. The specific log.txt for that example
+is the above:</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">log.txt</div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>Statistics</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>Created at:2011/03/18 19:15:02
+
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=960&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=774&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=702&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=1000&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=987&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&amp;task=detail&amp;id=840&amp;Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 2(name): Possible Name Περικλής
+Do not escape characters that are "unsafe" in URLS
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: +306941234567
+Possible Name:Περικλής
+Match 1(name): cellphoneMatcher demo example1 html Cellphone μολύνοντας αρχεία Περικλής File home periklis NetBeansProjects
+Possible Surname:Παπαχρίστου
+Match 2(surname): Possible Surname Παπαχρίστου
+Possible Surname:Παπαχρίστου
+Match 2(surname): Possible Surname Παπαχρίστου Match 1(surname) Παπαχρίστου
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6941234567
+Possible Name:επιστήμη
+Match 1(name): cellphoneMatcher demo example1 html Cellphone Τέλος στην επιστήμη File home periklis NetBeansProjects
+Possible Name:Χρήστο
+Match 2(name): Possible Name Χρήστο
+Possible Name:Χρήστο
+Match 2(name): Possible Name Χρήστο Match 2(name) που ανήκει στο κ Χρήστο
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 1(name): Ντανάσης με κινητότηλέφωνο ιούς οι δούρειοι ίπποι δε μεταδίδονται μολύνοντας αρχεία Περικλής
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: +306941234567
+Possible Surname:Παπαχρίστου
+Match 1(surname): Παπαχρίστου με νούμερο κάνει το υποψήφιο θύμα Αν θελετε καλέστε το κύριο
+Possible Name:επιστήμη
+Match 2(name): Τέλος στην επιστήμη
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Χρήστο
+Match 2(name): που ανήκει στο κ Χρήστο
+Possible Surname:Παπαφλέσα
+Match 2(surname): που ανήκει στο κ Χρήστο Παπαφλέσα</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cellphones Found: 18
+Webpages searched: 37
+Success ratio: 0.33333334</p></div>
+<div class="paragraph"><p>Execution Time: 2 sec</p></div>
+<div class="paragraph"><p>~/END
+Created with Periklis Ntanasis jedective
+                        Statistics</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>Created at:2011/03/18 19:16:51
+
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 1(name): Ντανάσης με κινητότηλέφωνο ιούς οι δούρειοι ίπποι δε μεταδίδονται μολύνοντας αρχεία Περικλής
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: +306941234567
+Possible Surname:Παπαχρίστου
+Match 1(surname): Παπαχρίστου με νούμερο κάνει το υποψήφιο θύμα Αν θελετε καλέστε το κύριο
+Possible Name:επιστήμη
+Match 2(name): Τέλος στην επιστήμη
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Χρήστο
+Match 2(name): που ανήκει στο κ Χρήστο
+Possible Surname:Παπαφλέσα
+Match 2(surname): που ανήκει στο κ Χρήστο Παπαφλέσα</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cellphones Found: 3
+Webpages searched: 0
+Success ratio: 1.0</p></div>
+<div class="paragraph"><p>Execution Time: 0 sec</p></div>
+<div class="paragraph"><p>~/END
+Created with Periklis Ntanasis jedective</p></div>
+</div></div>
+<div class="paragraph"><p>The log file can be saved with a different name with the -o &lt;filename&gt;
+switch.</p></div>
+<div class="paragraph"><p>You can find find some
+<a href="https://github.com/MasterEx/jedective/tree/master/demo">demo files</a> and a
+<a href="https://github.com/MasterEx/jedective/blob/master/demo/statistics.txt">log file</a>
+included in <a href="https://github.com/MasterEx/jedective">Jedective github repository</a>.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2011-03-18 19:44:45 EET
+</div>
+</div>
+</body>
+</html>

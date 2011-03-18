@@ -26,6 +26,12 @@ In order to conclude the above we are parsing Greek web pages for important
 personal informations, more precisely with cellphones and correlate them 
 with individuals.
 
+Getting Started
+---------------
+
+To start downloading a corpus of Greek webpages and parse them with
+jedective read the file:readme.html[Getting Started Guide]
+
 How it works
 ------------
 

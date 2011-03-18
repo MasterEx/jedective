@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.6.3" />
+<meta name="generator" content="AsciiDoc 8.6.4" />
 <title>Jedective</title>
 <style type="text/css">
 /* Sans-serif font. */
@@ -394,6 +394,42 @@ div.toclevel4 {
   font-size: 0.9em;
 }
 
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
 </style>
 <script type="text/javascript">
 /*<![CDATA[*/
@@ -561,7 +597,14 @@ with individuals.</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_it_works">3. How it works</h2>
+<h2 id="_getting_started">3. Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>To start downloading a corpus of Greek webpages and parse them with
+jedective read the <a href="file:readme.html">Getting Started Guide</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_it_works">4. How it works</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>Jedective is written in Java.</p></div>
 <div class="paragraph"><p>The parsing consists of the following steps:</p></div>
@@ -598,7 +641,7 @@ Creates a log with the search results.
 </li>
 </ol></div>
 <div class="sect2">
-<h3 id="_how_it_finds_the_greek_names">3.1. How it finds the Greek names</h3>
+<h3 id="_how_it_finds_the_greek_names">4.1. How it finds the Greek names</h3>
 <div class="paragraph"><p>Jedective has its own database of Greek names (entities.GreekNames.java).
 It consists of all common greek names found <a href="http://www.foundalis.com/grk/EllinikaOnomata.html">here</a>.
 The names have been modified with regex in order to have better results
@@ -607,14 +650,14 @@ The names have been modified with regex in order to have better results
 Greek surnames prefixes and postfixes.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_further_convertion">3.2. Further convertion</h3>
+<h3 id="_further_convertion">4.2. Further convertion</h3>
 <div class="paragraph"><p>Except the html to text conversion jedective also removes other stopwards
 such as punctuation to accomplish better results.</p></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgement">4. Acknowledgement</h2>
+<h2 id="_acknowledgement">5. Acknowledgement</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>Jedective was written by Periklis Ntanasis and it is a part of a university
  project supervised by <a href="http://pages.cs.aueb.gr/~marias/">Giannis F. Marias</a>.</p></div>
@@ -625,7 +668,7 @@ such as punctuation to accomplish better results.</p></div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-02-22 19:24:14 EET
+Last updated 2011-03-18 19:42:45 EET
 </div>
 </div>
 </body>

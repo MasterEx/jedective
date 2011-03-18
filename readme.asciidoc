@@ -1,0 +1,433 @@
+Jedective
+=========
+Periklis Ntanasis <pntanasis@gmail.com>
+:Author Initials: PKN
+:toc:
+:numbered:
+:website: https://github.com/MasterEx/jedective
+
+
+Introduction
+------------
+
+We are going to use http://www.pavuk.org/[pavuk] web crawler to download 
+a corpus of Greek web pages and then we are going to use 
+http://masterex.github.com/jedective/[Jedective] parser to extract the 
+statistics about the cellphones and other personal data appearance ratio.
+
+Installation
+------------
+
+=== Pavuk ===
+
+First of all we need to install pavuk. You can download pavuk from 
+http://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/[here].
+
+==== Windows ====
+
+.Pavuk Windows README
+****
+Pavuk is World Wide Web graber (mirroring tool for FTP/HTTP/Gopher/(SSL)).
+Pavuk was originaly writen for UNIX environment.
+
+This port of pavuk was made by using of gnu-win32 alias cygwin development 
+environment.
+
+        check out http://sourceware.cygnus.com/cygwin/
+
+This package contains executable file pavuk.exe and cygwin1.dll & cygz.dll
+(from cygwin net release 1.3.2) libraries taken from cygwin. 
+To use pavuk in Windows, just copy this files to some directory and use it.
+It doesn't need any other instalation steps.
+
+Pavuk-gnu-win32 is comand line driven program so grab manual page from 
+source distribution and check syntax or look into pavuk.html file.
+
+This win32 port of pavuk is full featured version. It lacks only GUI. 
+If you want Win32 pavuk with GUI download file pavuk-win32gui-0.9pl28.exe
+
+*!!!! WARNING !!!!*
+
+This version of pavuk was compiled with new cygwin POSIX runtime. It have
+significant changes in file paths handling, so please check your scenarios 
+and correct paths if you was using old cygwin paths //[drive]/ to 
+/cygdrive/[drive]/
+
+*!!!! WARNING !!!!*
+
+For new informations check pavuk homepage at URL:
+
+        http://pavuk.sourceforge.net/
+
+Stevo Ondrejicka
+****
+
+==== Linux ====
+
+Many Linux distributions contain pavuk in their repositories.
+
+.Ubuntu 10.10
+http://ns2.canonical.com/hu/maverick/web/pavuk[Package: pavuk (0.9.35-2.1ubuntu1)]
+
+[source,bash]
+apt-get install pavuk
+
+.Debian 6.0
+http://packages.debian.org/squeeze/pavuk[Package: pavuk (0.9.35-2.1)]
+
+[source,bash]
+apt-get install pavuk
+
+.ArchLinux
+http://aur.archlinux.org/packages.php?ID=22641[pavuk 0.9.35-4]
+
+You may download it and install it from 
+https://wiki.archlinux.org/index.php/Arch_User_Repository[AUR].
+
+.Installing from source
+
+You can also install the later version of pavuk from source. Download
+the latest version of pavuk from 
+http://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/[sourceforge].
+
+.INSTALL README
+****
+*pavuk0.9 installation*
+
+*What you need:*
+
+	- GCC or other ANSI C compiler (Digital OSF/1 3.2 cc successfuly tesed)
+	- optionaly X11 libraries - R5 and R6 tested 
+	- optionaly GTK libraries (1.0.0 or heigher required, older may not work 
+			   because of API changes and new widgets)
+			   when you want multithreading support, you need
+			   at least version 1.2.0
+	- optionaly SSLeay or OpenSSL package - 
+			   when you plan to use pavuk for mirroring and or 
+			   transfering documents via HTTPS (SSL) , you need 
+			   to have installed SSLeay package at least v0.8.0
+	- optionaly SOCKS 4 or 5 package for supporting your SOCKS firewall
+	- optionaly GNU gettext library for internationalized messages support
+	- optionaly support for regular expressions in libc (POSIX, GNU, BSD, 
+	  Bell V8 or PCRE implementation)
+	- optionaly Berkeley db 1.8x library to support loading files from
+	  Netscape or Mozilla browser cache directory
+	- optionaly zlib library to support document decoding without calling
+	  gzip program
+	- optionaly pthread (POSIX threads) library for support multithreading
+	  (in this case all other used libraries should be compiled and 
+           designed to support multithreading - mainly X and GTK)
+	- optionaly libdes or OpenSSL libcrypto to support NTLM authorization
+	- optionaly Mozillas JavaScript runtime library libjs to support
+	  JavaScript bindings
+	- optionaly Netscape/Mozilla NSS3 and NSPR libraries to support SSL
+	  when you can't or don't want to use OpenSSL which is not GPL
+	  compatible
+	- optionaly libmcrypt or libgrypt libraries (with DES support) to
+	  support NTLM authorization and don't want to link with libcrypt
+	  which is part of OpenSSL which is not GPL compatible
+
+
+*Installing*
+
+type 
+	tar -xzvf pavuk-0.9.tgz
+or 
+	gunzip -c pavuk-0.9.tgz | tar -xf -
+to unpack source
+
+Change directory to pavuk-0.9 and type
+
+	./configure
+
+to configure package for your system setup. Configure script accepts some
+extra options, to allow better tunning of pavuk features:
+
+	--enable-threads - to enable compilation with multithreading support
+	--disable-socks  - to disable compilation of SOCKS support
+	--disable-gtk	 - to disable compilation of GTK interface
+	--disable-ssl    - to disable compilation of SSL support
+	--disable-nls	 - to disable compilation with gettext NLS
+	--disable-debug  - to disable compilation with debuging support
+	--disable-gnome  - to deny instalation of pavuks Gnome related files
+	--disable-ntlm   - do not compile with NTLM auth support
+	--disable-tree   - do not compile with tree preview
+			   (saves a lot of memory when running GUI)
+	--disable-js     - to disable compilation of JavaScript bindings support
+	--disable-ipv6   - to disable support of IPv6 protocol
+	--with-*-includes - you should specify location of header
+			    files for optionals packages
+			    (ssl,gtk,intl,zlib,socks,js)
+	--with-*-libraries - you should specify location of libraries
+			     for optional packages
+			     (ssl,gtk,intl,zlib,socks,js)
+	--with-locale-dir - path to your locale directory
+	--with-regex=[none/auto/posix/gnu/v8/bsd/pcre]
+			 - for selecting required regular expressions 
+                           implemetation, if your system contains multiple
+			   supported implementation
+	--with-ssl=[none/auto/openssl/ssleay/nss]
+			 - for selecting requested SSL library implementation
+	--with-desimpl=[none/auto/libcrypto/libdes/libmcrypt/libgcrypt]
+			 - for selecting requested DES algorithm implementation
+			   library
+	--with-egd-socket=NAME - use NAME for the EGD socket
+
+for more options check configure --help
+
+to compile package, type at commandline
+
+	make
+
+to install package, type at commandline
+
+	make install
+
+This will copy pavuk binary, manual page, message catalogs and other files to
+destination directories.
+
+Feel free to email me if you have some problems with pavuk instalation
+or use.
+
+If you can't succesfuly build this program please contact me via email :
+<ondrej@idata.sk>.
+****
+
+=== Jedective ===
+
+https://github.com/MasterEx/jedective[Jedective] is written in Java and 
+you can simply download the prebuild .jar from 
+https://github.com/MasterEx/jedective/archives/master[github].
+
+No further installation is needed.
+
+Crawling and Parsing
+--------------------
+
+Here we will explain how we can download a set of webpages and then parse
+them for cellphones and match the findings with possible owner names.
+
+=== Crawling ===
+
+Let's say there is a start webpage http://www.example.com from where we
+will begin our crawling.
+
+[source,bash]
+pavuk http://www.example.com -sleep 1 -noRobots -noFTP -noGopher -noEnc 
+-noRelocate -asite www.example.com -logfile log/log -slogfile log/short.log 
+-noread_css -noencode -store_info -info_dir info/ -nthreads 7
+-auto_referer -amimet text/html,text/plain,text/richtext,text/rtf,text/xml,"text/html*" 
+-disable_js -index_name page_index -remove_adv
+
+.Switches used
+|===================
+|sleep|1 sec sleep between every http request
+|noRobots|ignore robots.txt
+|noFTP|don't use ftp
+|noGopher|don't use gopher
+|noEnc|This  switch  suppresses  using  of  gzip or compress or deflate
+encoding in transfer
+|noRelocate|This switch prevents the program to  rewrite  relative  URLs  to
+absolute,  after  HTML  document  is  transfered
+|asite|download pages only from the domain www.example.com
+|logfile|log everything
+|slogfile|create a short log
+|noread_css|don't download css files
+|noencode|Do not escape characters that are "unsafe" in URLS
+|store_info|buil an index
+|nthreads|use 7 threads - works if it is compiled with multithreading support on
+|auto_referer|This option forces pavuk to send HTTP Referer: header field with
+starting URLs
+|amimet|download only html files
+|disable_js|don't download javascript
+|index_name|changes index.{*} to page_index
+|remove_adv|remove advertises
+|===================
+
+You may find more informations about http header 
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html[here].
+
+You can see a short list of pavuk's switches by using the -h argument:
+
+[source,bash]
+pavuk -h
+
+or a most extensive by reading it's man page in linux systems:
+
+[source,bash]
+man pavuk
+
+=== Parsing ===
+
+The html files will be stored in a directory named "http".
+
+.Jedective Usage
+[source,bash]
+----
+java -jar jedective.jar help
+Jedective Copyright (C) 2010-2011 Periklis Ntanasis
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see http://www.gnu.org/licenses/gpl.html for details.
+
+Usage: java -jar jedetive.jar [options] <file>
+
+	Options are:
+	 out <filename>	sets the logfile name
+	 help		this help message
+----
+
+So we can run jedective to a hole directory as:
+
+[source,bash]
+java -jar jedective.jar ./demo/
+
+or to a specific file as:
+[source,bash]
+java -jar jedective.jar ./demo/example.html
+
+If we run the above two commands we the exact order there will be produced
+a log.txt in our current directory. The specific log.txt for that example 
+is the above:
+
+.log.txt
+****
+
+			Statistics
+
+---------------------------------------
+Created at:2011/03/18 19:15:02
+
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=960&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=774&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=702&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=1000&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=987&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/cars.gr_80/index.php?option=com_ezautos&task=detail&id=840&Itemid=
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6937213531
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 2(name): Possible Name Περικλής
+Do not escape characters that are "unsafe" in URLS
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: +306941234567
+Possible Name:Περικλής
+Match 1(name): cellphoneMatcher demo example1 html Cellphone μολύνοντας αρχεία Περικλής File home periklis NetBeansProjects
+Possible Surname:Παπαχρίστου
+Match 2(surname): Possible Surname Παπαχρίστου
+Possible Surname:Παπαχρίστου
+Match 2(surname): Possible Surname Παπαχρίστου Match 1(surname) Παπαχρίστου
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/statistics.txt
+Cellphone: 6941234567
+Possible Name:επιστήμη
+Match 1(name): cellphoneMatcher demo example1 html Cellphone Τέλος στην επιστήμη File home periklis NetBeansProjects
+Possible Name:Χρήστο
+Match 2(name): Possible Name Χρήστο
+Possible Name:Χρήστο
+Match 2(name): Possible Name Χρήστο Match 2(name) που ανήκει στο κ Χρήστο
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 1(name): Ντανάσης με κινητότηλέφωνο ιούς οι δούρειοι ίπποι δε μεταδίδονται μολύνοντας αρχεία Περικλής
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: +306941234567
+Possible Surname:Παπαχρίστου
+Match 1(surname): Παπαχρίστου με νούμερο κάνει το υποψήφιο θύμα Αν θελετε καλέστε το κύριο
+Possible Name:επιστήμη
+Match 2(name): Τέλος στην επιστήμη
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Χρήστο
+Match 2(name): που ανήκει στο κ Χρήστο
+Possible Surname:Παπαφλέσα
+Match 2(surname): που ανήκει στο κ Χρήστο Παπαφλέσα
+
+---------------------------------------
+
+Cellphones Found: 18
+Webpages searched: 37
+Success ratio: 0.33333334
+
+Execution Time: 2 sec
+
+~/END
+Created with Periklis Ntanasis jedective
+			Statistics
+
+---------------------------------------
+Created at:2011/03/18 19:16:51
+
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Περικλής
+Match 1(name): Ντανάσης με κινητότηλέφωνο ιούς οι δούρειοι ίπποι δε μεταδίδονται μολύνοντας αρχεία Περικλής
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: +306941234567
+Possible Surname:Παπαχρίστου
+Match 1(surname): Παπαχρίστου με νούμερο κάνει το υποψήφιο θύμα Αν θελετε καλέστε το κύριο
+Possible Name:επιστήμη
+Match 2(name): Τέλος στην επιστήμη
+
+File: /home/periklis/NetBeansProjects/cellphoneMatcher/jedective/../demo/example.html
+Cellphone: 6941234567
+Possible Name:Χρήστο
+Match 2(name): που ανήκει στο κ Χρήστο
+Possible Surname:Παπαφλέσα
+Match 2(surname): που ανήκει στο κ Χρήστο Παπαφλέσα
+
+---------------------------------------
+
+Cellphones Found: 3
+Webpages searched: 0
+Success ratio: 1.0
+
+Execution Time: 0 sec
+
+~/END
+Created with Periklis Ntanasis jedective
+****
+
+The log file can be saved with a different name with the -o <filename>
+switch.
+
+You can find find some 
+https://github.com/MasterEx/jedective/tree/master/demo[demo files] and a
+https://github.com/MasterEx/jedective/blob/master/demo/statistics.txt[log file]
+included in https://github.com/MasterEx/jedective[Jedective github repository].
