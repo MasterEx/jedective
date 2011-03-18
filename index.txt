@@ -30,7 +30,7 @@ Getting Started
 ---------------
 
 To start downloading a corpus of Greek webpages and parse them with
-jedective read the file:readme.html[Getting Started Guide]
+jedective read the link:readme.html[Getting Started Guide]
 
 How it works
 ------------
