@@ -23,6 +23,9 @@ Installation
 First of all we need to install pavuk. You can download pavuk from 
 http://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/[here].
 
+There is also an http://hebbut.net/Public.Offerings/pavuk/Pavuk.ManPage.html[online manual]
+provided by http://hobbelt.com/[Ger Hobbelt].
+
 ==== Windows ====
 
 .Pavuk Windows README
@@ -61,6 +64,17 @@ For new informations check pavuk homepage at URL:
 
 Stevo Ondrejicka
 ****
+
+===== Alternative way =====
+
+You can download a precompiled windows version of pavuk from 
+http://hebbut.net/Public.Offerings/pavuk/downloads/pavuk-0.9.36cvs-20071108-win32-bin.7z[here].
+This binary is located in 
+http://hebbut.net/Public.Offerings/pavuk.html[Hebbut.Net Public Download Area]
+and it's provided by http://hobbelt.com/[Ger Hobbelt]
+
+In the extracted directory you will find a windows binary that you can
+easily run.
 
 ==== Linux ====
 
@@ -192,6 +206,11 @@ or use.
 If you can't succesfuly build this program please contact me via email :
 <ondrej@idata.sk>.
 ****
+
+.Alternative Downloads
+NOTE: You can download https://github.com/downloads/MasterEx/jedective/pavuk-0.9.35.tar.gz[pavuk sources]
+      or https://github.com/downloads/MasterEx/jedective/pavuk-0.9.36cvs-20071108-win32-bin.7z[the windows binary version of pavuk]
+      from jedective https://github.com/MasterEx/jedective/downloads[github repo].
 
 === Jedective ===
 
@@ -427,7 +446,7 @@ Created with Periklis Ntanasis jedective
 The log file can be saved with a different name with the -o <filename>
 switch.
 
-You can find find some 
+You can find some 
 https://github.com/MasterEx/jedective/tree/master/demo[demo files] and a
 https://github.com/MasterEx/jedective/blob/master/demo/statistics.txt[log file]
 included in https://github.com/MasterEx/jedective[Jedective github repository].
